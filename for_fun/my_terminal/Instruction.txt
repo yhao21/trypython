@@ -1,0 +1,51 @@
+command instructions:
+
+
+1. quit terminal:
+    quit
+
+2. pwd path:
+    pwd
+
+3. ls
+    ls
+
+4. cd path
+    cd <path>
+
+5. cd..
+
+6. mkdir <folder name>
+
+7. rm <file>
+    need to fix deeper remove.!!!!!!!!!
+
+8. touch <file name>
+
+9. web scrapping
+    scrapping  <mode>
+    example:
+    scrapping r     for requests
+    scrapping s     for selenium
+
+10. read csv
+    csv <file name>
+
+11. show csv head
+    csv.head <file name>
+
+12. change disk path
+    d:, c:, D:, C:
+    one of the above one works
+
+13. open an application/file
+    go <app name>
+
+14. add apps to quick path. then you can run the app through type it's name directly.
+    add path
+
+15. check how many apps you have added to the path:
+    check path
+
+16. delete path you have added to the json file.
+    del path

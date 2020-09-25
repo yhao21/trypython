@@ -1,0 +1,80 @@
+Indexing模块手册
+
+
+此模块包含以下功能：
+
+	1. 将数字转换为小写英文字母
+	2. 将数字转换为大写英文字母
+	3. 将大写英文字母转换为对应数字
+	4. 按照Excel相同命令选取范围内单元格，如'A1:B3'
+
+
+
+第一步：安装模块
+
+	把Excel这个文件夹放到site-packages里面，这样pycharm就可以自动识别这个模块，
+	或者把Excel文件夹和你的.py文件（python脚本）放在同一个根目录下。
+
+
+第二步：模块导入
+
+	在你自己新建的.py文件中使用以下命令可以分别使用这个模块中的不同功能：
+		1. 如何将1-26的数字转换为a-z的小写字母：
+			from Excel import Indexing
+
+			a = 5
+			b = Indexing.ToLowerLetter(a)
+			print(b)
+
+			b返回的就是小写字母e，e是第五个英文字母
+
+
+		2. 如何将1-26的数字转换为A-Z的大写字母：
+			from Excel import Indexing
+
+			a = 5
+			b = Indexing.NumToLetter(a)
+			print(b)
+
+			b返回的就是大写字母E
+
+
+		3. 如何将A-Z的大写字母转换为对应的数字：
+			from Excel import Indexing
+
+			a = 'E'
+			b = Indexing.LetterToNum(a)
+			print(b)
+
+			b返回的就是数字5
+
+
+		4. 如何像excel中一样批量选取单元格：
+			from Excel import Indexing
+
+			a = 'A1:B2'
+			b = Indexing.CellRange(a)
+			print(b)
+
+			b返回的是['A1','A2','B1','B2']四个单元格，openpyxl模块的添加边框、填充颜色等操作都需要先提供目标单元格，
+			如果自己手动写循环会很慢，使用Indexing.CellRange()这个命令可以让你像使用Excel一样批量选取单元格。
+
+			这个命令可以自动识别你输入的起始和终止单元格。同样选取A1：B2这四个单元格，你可以通过这样的顺序选取：
+
+			b = Indexing.CellRange('B2:A1')
+			b = Indexing.CellRange('B1:A2')
+			b = Indexing.CellRange('A2:B1')
+
+			只要你只用对角线上的两个单元格定位，这条命令就会帮你选取出这个矩形范围内的所有单元格
+			同理， 你在选取同一行或者同一列的单元格时，也无需按照从前到后的顺序。
+
+			b = Indexing.CellRange('A1:A10')
+			b = Indexing.CellRange('A10:A1')
+
+			均可以选取从A1到A10的这一列单元格
+
+			b = Indexing.CellRange('A1:E1')
+			b = Indexing.CellRange('E1:A1')
+
+			均可选取出从A1到E1的这一行单元格
+

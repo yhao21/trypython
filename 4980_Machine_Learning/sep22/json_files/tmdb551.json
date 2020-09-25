@@ -1,0 +1,68 @@
+{
+    "adult": false,
+    "backdrop_path": "/v1QEIuBM1vvpvfqalahhIyXY0Cm.jpg",
+    "belongs_to_collection": {
+        "id": 372257,
+        "name": "The Poseidon Adventure Collection",
+        "poster_path": "/ngvcBGzUbPsUGaSSLOaVNG2lfLW.jpg",
+        "backdrop_path": "/kE3SAAQfWVkjJUZy1ohha8hy3LH.jpg"
+    },
+    "budget": 5000000,
+    "genres": [
+        {
+            "id": 28,
+            "name": "Action"
+        },
+        {
+            "id": 12,
+            "name": "Adventure"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        }
+    ],
+    "homepage": "",
+    "id": 551,
+    "imdb_id": "tt0069113",
+    "original_language": "en",
+    "original_title": "The Poseidon Adventure",
+    "overview": "When their ocean liner capsizes at sea, a group of passengers struggle to survive and escape.",
+    "popularity": 14.563,
+    "poster_path": "/6RGiA5BfhelU9zoD0b1GAG4GWWf.jpg",
+    "production_companies": [
+        {
+            "id": 10281,
+            "logo_path": null,
+            "name": "Kent Productions",
+            "origin_country": ""
+        },
+        {
+            "id": 25,
+            "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+            "name": "20th Century Fox",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "1972-12-13",
+    "revenue": 84563118,
+    "runtime": 117,
+    "spoken_languages": [
+        {
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "Hell, Upside Down",
+    "title": "The Poseidon Adventure",
+    "video": false,
+    "vote_average": 7.2,
+    "vote_count": 510
+}

@@ -1,0 +1,36 @@
+my_requests history version:
+
+
+
+
+--------------------------version 1.3-----------------------------
+Release date: Feb.20,2020
+
+Now user can download ajax webpage through this module.
+
+
+--------------------------version 1.2-----------------------------
+Release date: Feb.19,2020
+
+This version rewrite the program in OOP (object oriented programming) method.
+It allows other users to further expand program.
+
+
+--------------------------version 1.1-----------------------------
+Release date: Feb.18,2020
+
+This updating version allow users submit both list and generator to "url_numbers".
+We recommend users using generator as it will save your memory space and run this program faster.
+
+
+--------------------------version 1.0-----------------------------
+Release date: Feb.17,2020
+
+This module help you making web scrapping eaiser.
+1. It supports single/multiple page downloading.
+2. It supports, continuously, multiple times web page scrapping function.
+3. It can solve abnormal url with page number, which is derived through arithmetic calculation.
+4. It allows users to adjust time interval among downloading each page,or among multiple time of downloadings.
+
+
+

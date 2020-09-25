@@ -1,0 +1,24 @@
+usrname: synferlo
+passwd: harry618
+email: xie
+
+
+Never show your api key to others!!
+
+after sign in, click setting
+then API
+
+Choose developer
+
+
+API Key (v3 auth)
+
+bc2d1819d6e843ced94b1aadacbfe29e
+
+API Read Access Token (v4 auth)
+
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzJkMTgxOWQ2ZTg0M2NlZDk0YjFhYWRhY2JmZTI5ZSIsInN1YiI6IjVmNjM5NGJmODQ0NDhlMDAzNzY1MTAxMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iHAH7n1ScYi-JZ2EU0kbn1TS_87AfBjSryMi-DpS25o
+
+
+
+https://api.themoviedb.org/3/movie/550?api_key=bc2d1819d6e843ced94b1aadacbfe29e

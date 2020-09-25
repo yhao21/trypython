@@ -1,0 +1,201 @@
+ID,TMC,Severity,Start_Time,Distance(mi),Side,County,State,Temperature(F),Humidity(%),Visibility(mi),Wind_Speed(mph),Weather_Condition,Amenity,Bump,Crossing,Give_Way,Junction,No_Exit,Railway,Roundabout,Station,Stop,Traffic_Calming,Traffic_Signal,Turning_Loop,Sunrise_Sunset
+A-1,201.0,3,2016-02-08 05:46:00,0.01,R,Montgomery,OH,36.9,91.0,10.0,,Light Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-2,201.0,2,2016-02-08 06:07:59,0.01,L,Franklin,OH,37.9,100.0,10.0,,Light Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-3,201.0,2,2016-02-08 06:49:27,0.01,R,Clermont,OH,36.0,100.0,10.0,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-4,201.0,3,2016-02-08 07:23:34,0.01,R,Montgomery,OH,35.1,96.0,9.0,4.6,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-5,201.0,2,2016-02-08 07:39:07,0.01,R,Montgomery,OH,36.0,89.0,6.0,3.5,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-6,201.0,3,2016-02-08 07:44:26,0.01,R,Franklin,OH,37.9,97.0,7.0,3.5,Light Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-7,201.0,2,2016-02-08 07:59:35,0.0,R,Montgomery,OH,34.0,100.0,7.0,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-8,201.0,3,2016-02-08 07:59:58,0.01,R,Montgomery,OH,34.0,100.0,7.0,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-9,201.0,2,2016-02-08 08:00:40,0.0,L,Montgomery,OH,33.3,99.0,5.0,1.2,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-10,201.0,3,2016-02-08 08:10:04,0.01,R,Franklin,OH,37.4,100.0,3.0,4.6,Light Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-11,201.0,3,2016-02-08 08:14:42,0.01,R,Franklin,OH,35.6,93.0,5.0,5.8,Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-12,241.0,3,2016-02-08 08:21:27,0.01,R,Franklin,OH,37.4,100.0,3.0,4.6,Light Rain,False,False,False,False,True,False,False,False,False,False,False,False,False,Day
+A-13,201.0,2,2016-02-08 08:36:34,0.0,R,Montgomery,OH,33.8,100.0,3.0,2.3,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-14,201.0,2,2016-02-08 08:37:07,0.01,L,Montgomery,OH,36.0,89.0,10.0,5.8,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-15,201.0,2,2016-02-08 08:39:43,0.01,L,Franklin,OH,37.4,100.0,3.0,4.6,Light Rain,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-16,201.0,2,2016-02-08 08:43:20,0.01,R,Montgomery,OH,33.8,100.0,3.0,2.3,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-17,201.0,2,2016-02-08 08:53:17,0.01,R,Montgomery,OH,35.6,99.0,7.0,2.3,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-18,201.0,2,2016-02-08 09:24:37,0.0,R,Montgomery,OH,36.0,89.0,10.0,5.8,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-19,201.0,2,2016-02-08 09:25:17,0.01,L,Montgomery,OH,37.4,93.0,10.0,6.9,Overcast,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-20,201.0,2,2016-02-08 09:35:35,0.01,R,Montgomery,OH,36.0,89.0,10.0,6.9,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-21,201.0,2,2016-02-08 10:11:15,0.0,R,Franklin,OH,33.8,100.0,2.0,4.6,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-22,201.0,2,2016-02-08 10:24:27,0.0,R,Montgomery,OH,36.0,89.0,10.0,6.9,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-23,201.0,2,2016-02-08 11:53:19,0.01,R,Montgomery,OH,35.1,89.0,6.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-24,201.0,3,2016-02-08 12:00:00,0.01,R,Franklin,OH,37.0,96.0,8.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-25,201.0,2,2016-02-08 12:16:44,0.01,R,Montgomery,OH,37.9,76.0,10.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-26,201.0,2,2016-02-08 12:41:08,1.32,L,Licking,OH,37.9,100.0,5.0,4.6,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-27,201.0,2,2016-02-08 12:52:05,0.0,R,Montgomery,OH,36.0,86.0,7.0,9.2,Light Snow,True,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-28,201.0,2,2016-02-08 14:24:48,0.0,R,Montgomery,OH,39.9,70.0,10.0,11.5,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-29,201.0,2,2016-02-08 14:56:57,0.01,R,Montgomery,OH,39.9,65.0,10.0,8.1,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-30,201.0,2,2016-02-08 15:26:14,0.0,R,Montgomery,OH,39.2,75.0,10.0,4.6,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-31,201.0,2,2016-02-08 16:16:08,0.01,R,Franklin,OH,37.0,89.0,10.0,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-32,201.0,2,2016-02-08 17:39:24,0.0,L,Montgomery,OH,34.2,97.0,10.0,3.5,Light Rain,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-33,201.0,3,2016-02-08 18:24:00,0.01,R,Franklin,OH,33.8,100.0,6.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-34,201.0,3,2016-02-08 19:28:00,0.01,R,Franklin,OH,34.0,100.0,6.0,,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-35,201.0,2,2016-02-08 20:22:38,0.01,R,Franklin,OH,33.1,92.0,7.0,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-36,201.0,2,2016-02-08 20:43:00,1.09,R,Franklin,OH,33.1,92.0,9.0,9.2,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-37,201.0,2,2016-02-09 04:28:48,0.01,L,Montgomery,OH,23.0,93.0,5.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-38,201.0,2,2016-02-09 05:04:34,0.01,R,Fairfield,OH,23.0,93.0,2.5,11.5,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-39,201.0,2,2016-02-09 05:17:08,0.01,R,Montgomery,OH,22.8,89.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-40,201.0,3,2016-02-09 05:27:20,0.01,R,Franklin,OH,26.6,86.0,1.5,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-41,201.0,2,2016-02-09 05:40:57,0.0,R,Warren,OH,21.0,85.0,0.8,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-42,201.0,2,2016-02-09 05:47:16,0.01,R,Montgomery,OH,23.0,86.0,3.0,10.4,Light Snow,False,False,True,False,False,False,False,False,False,False,False,True,False,Night
+A-43,201.0,2,2016-02-09 05:56:10,0.01,R,Clinton,OH,19.9,89.0,1.8,13.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-44,201.0,3,2016-02-09 06:06:45,0.01,R,Franklin,OH,25.0,88.0,1.0,9.2,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-45,201.0,3,2016-02-09 06:13:33,0.01,R,Montgomery,OH,23.0,88.0,2.0,15.0,Light Snow,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-46,201.0,3,2016-02-09 06:12:49,0.01,R,Franklin,OH,25.0,88.0,1.0,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-47,201.0,2,2016-02-09 06:21:50,0.01,R,Franklin,OH,26.1,84.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-48,201.0,3,2016-02-09 06:20:46,0.01,R,Franklin,OH,24.8,86.0,1.0,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-49,201.0,2,2016-02-09 06:34:41,0.01,R,Montgomery,OH,23.0,86.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-50,201.0,3,2016-02-09 06:41:09,0.01,R,Montgomery,OH,23.0,86.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-51,201.0,2,2016-02-09 06:48:18,0.01,L,Montgomery,OH,21.9,92.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-52,201.0,2,2016-02-09 06:53:09,0.01,R,Montgomery,OH,21.9,92.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-53,201.0,3,2016-02-09 06:54:31,0.01,R,Montgomery,OH,21.9,92.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-54,201.0,3,2016-02-09 07:03:20,0.01,R,Franklin,OH,21.2,93.0,1.5,13.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-55,201.0,3,2016-02-09 07:05:37,0.01,R,Montgomery,OH,21.0,85.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-56,201.0,2,2016-02-09 07:04:58,0.01,R,Clermont,OH,21.0,93.0,2.5,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-57,201.0,2,2016-02-09 07:15:41,0.01,L,Montgomery,OH,21.9,92.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-58,201.0,2,2016-02-09 07:41:01,0.01,R,Montgomery,OH,22.5,90.0,1.2,9.2,Light Snow,True,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-59,201.0,2,2016-02-09 07:42:43,0.01,R,Montgomery,OH,22.5,90.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-60,201.0,2,2016-02-09 07:42:11,0.01,R,Montgomery,OH,22.5,90.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-61,201.0,3,2016-02-09 07:46:41,0.01,R,Franklin,OH,24.8,86.0,1.8,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-62,201.0,2,2016-02-09 07:54:44,0.0,R,Montgomery,OH,21.2,93.0,2.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-63,201.0,2,2016-02-09 08:06:39,0.01,R,Warren,OH,21.0,81.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-64,201.0,2,2016-02-09 08:12:44,0.01,R,Warren,OH,21.0,81.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-65,201.0,2,2016-02-09 08:10:20,0.0,R,Fairfield,OH,21.9,85.0,0.8,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-66,201.0,3,2016-02-09 08:23:36,0.01,R,Montgomery,OH,21.0,81.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-67,201.0,3,2016-02-09 08:24:29,0.01,R,Warren,OH,21.0,81.0,1.2,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-68,201.0,3,2016-02-09 08:20:30,0.01,R,Cuyahoga,OH,32.0,82.0,10.0,12.7,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-69,201.0,3,2016-02-09 08:35:53,0.01,R,Cuyahoga,OH,32.0,82.0,10.0,12.7,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-70,241.0,3,2016-02-09 10:06:46,0.01,R,Franklin,OH,21.2,93.0,5.0,11.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-71,241.0,2,2016-02-09 11:09:37,0.01,L,Hancock,OH,27.0,81.0,2.5,19.6,Light Snow,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-72,201.0,2,2016-02-10 06:18:16,0.0,R,Clermont,OH,16.2,81.0,5.0,9.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-73,241.0,3,2016-02-10 06:06:00,0.01,L,Franklin,OH,15.8,73.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-74,201.0,2,2016-02-10 06:24:29,0.0,R,Franklin,OH,15.8,73.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-75,201.0,2,2016-02-10 06:53:02,0.01,R,Greene,OH,15.4,82.0,7.0,13.8,Light Snow,False,False,True,False,False,False,True,False,False,False,False,False,False,Night
+A-76,201.0,3,2016-02-10 07:50:52,0.01,R,Miami,OH,14.0,93.0,7.0,15.0,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-77,201.0,3,2016-02-10 07:50:08,0.01,R,Franklin,OH,15.1,77.0,1.0,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-78,247.0,2,2016-02-10 08:01:30,0.01,R,Clermont,OH,15.8,88.0,1.8,6.9,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-79,201.0,2,2016-02-10 08:08:36,0.0,L,Franklin,OH,16.0,81.0,1.5,13.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-80,201.0,2,2016-02-10 08:11:22,0.0,L,Clermont,OH,15.8,84.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-81,201.0,2,2016-02-10 08:50:54,0.01,R,Franklin,OH,16.0,77.0,1.0,9.2,Light Snow,False,False,False,False,False,False,False,False,True,False,False,False,False,Day
+A-82,201.0,3,2016-02-10 09:03:53,0.01,R,Delaware,OH,17.6,79.0,3.0,11.5,Haze,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-83,201.0,3,2016-02-10 09:42:04,0.01,R,Franklin,OH,15.8,79.0,1.5,10.4,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-84,241.0,3,2016-02-10 10:38:58,0.01,R,Franklin,OH,17.1,77.0,1.5,13.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-85,201.0,3,2016-02-10 17:10:00,0.01,R,Summit,OH,19.9,81.0,1.0,10.4,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Day
+A-86,201.0,3,2016-02-10 18:09:00,1.28,L,Summit,OH,19.9,78.0,4.0,12.7,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-87,201.0,3,2016-02-10 18:41:44,0.01,R,Richland,OH,16.0,77.0,7.0,11.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-88,201.0,3,2016-02-11 05:32:29,0.01,R,Cuyahoga,OH,14.0,56.0,9.0,11.5,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-89,201.0,3,2016-02-11 05:30:51,0.01,L,Summit,OH,14.0,74.0,4.0,10.4,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-90,201.0,2,2016-02-11 06:10:07,0.01,R,Montgomery,OH,7.0,87.0,10.0,8.1,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-91,201.0,2,2016-02-11 06:20:28,0.01,L,Clermont,OH,15.4,70.0,10.0,,Overcast,False,False,False,False,False,False,False,False,False,True,False,False,False,Night
+A-92,201.0,3,2016-02-11 06:29:00,0.01,R,Cuyahoga,OH,17.1,59.0,10.0,21.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-93,201.0,2,2016-02-11 07:17:58,0.01,R,Franklin,OH,6.1,83.0,10.0,8.1,Partly Cloudy,False,False,True,False,False,False,False,False,False,False,False,False,False,Night
+A-94,201.0,2,2016-02-11 07:18:39,0.01,R,Franklin,OH,5.0,81.0,10.0,3.5,Clear,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-95,201.0,3,2016-02-11 07:21:55,0.01,R,Summit,OH,12.0,80.0,2.0,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-96,201.0,2,2016-02-11 07:28:16,0.01,L,Licking,OH,7.0,77.0,10.0,,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-97,201.0,3,2016-02-11 07:29:06,0.01,R,Cuyahoga,OH,15.1,51.0,10.0,18.4,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-98,201.0,2,2016-02-11 07:53:55,0.0,R,Montgomery,OH,9.0,77.0,9.0,,Clear,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-99,201.0,2,2016-02-11 08:07:02,0.01,R,Montgomery,OH,7.5,87.0,10.0,4.6,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-100,201.0,2,2016-02-11 08:13:24,0.01,R,Montgomery,OH,7.5,87.0,10.0,4.6,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-101,201.0,2,2016-02-11 08:23:17,0.01,L,Franklin,OH,12.0,70.0,9.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-102,241.0,2,2016-02-11 08:34:14,0.48,R,Franklin,OH,12.0,77.0,10.0,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-103,201.0,3,2016-02-11 08:29:21,0.01,R,Cuyahoga,OH,18.0,54.0,10.0,25.3,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-104,201.0,2,2016-02-11 09:16:13,0.0,R,Montgomery,OH,12.0,73.0,10.0,,Clear,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-105,201.0,2,2016-02-11 09:16:13,0.0,R,Montgomery,OH,10.9,77.0,10.0,6.9,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-106,201.0,2,2016-02-11 09:31:23,0.01,R,Montgomery,OH,13.6,74.0,10.0,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-107,241.0,3,2016-02-11 09:37:31,0.01,R,Franklin,OH,10.4,78.0,10.0,4.6,Overcast,False,False,False,False,True,False,False,False,False,False,False,False,False,Day
+A-108,201.0,2,2016-02-11 09:46:39,0.01,R,Montgomery,OH,13.6,74.0,10.0,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-109,201.0,2,2016-02-11 10:48:29,0.0,R,Montgomery,OH,18.0,68.0,10.0,10.4,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-110,201.0,2,2016-02-11 10:53:56,0.0,L,Montgomery,OH,18.0,54.0,10.0,6.9,Clear,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-111,201.0,2,2016-02-11 11:21:42,0.01,R,Montgomery,OH,18.5,62.0,10.0,9.2,Mostly Cloudy,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-112,201.0,2,2016-02-11 12:24:45,0.01,L,Montgomery,OH,19.9,65.0,10.0,9.2,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-113,201.0,2,2016-02-11 12:24:18,0.01,L,Montgomery,OH,19.9,65.0,10.0,9.2,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-114,201.0,2,2016-02-11 13:44:46,0.01,L,Montgomery,OH,21.6,49.0,10.0,6.9,Mostly Cloudy,True,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-115,201.0,2,2016-02-11 14:16:49,0.01,L,Montgomery,OH,21.6,49.0,10.0,6.9,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-116,201.0,2,2016-02-11 15:34:06,0.0,L,Montgomery,OH,21.0,57.0,10.0,4.6,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-117,201.0,2,2016-02-11 16:34:27,0.01,R,Montgomery,OH,21.0,57.0,10.0,8.1,Mostly Cloudy,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-118,201.0,3,2016-02-11 17:10:00,0.01,R,Montgomery,OH,21.0,57.0,10.0,8.1,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-119,201.0,2,2016-02-11 18:27:00,0.01,R,Montgomery,OH,21.0,51.0,10.0,8.1,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-120,201.0,3,2016-02-11 19:11:00,0.01,R,Franklin,OH,19.0,57.0,9.0,,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-121,201.0,3,2016-02-11 19:22:00,0.01,R,Franklin,OH,17.1,62.0,10.0,3.5,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-122,201.0,3,2016-02-11 20:48:00,0.01,R,Montgomery,OH,17.1,68.0,10.0,,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-123,201.0,2,2016-02-12 16:16:51,0.0,L,Montgomery,OH,26.6,59.0,10.0,16.1,Light Snow,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-124,201.0,2,2016-02-12 16:42:52,0.01,R,Montgomery,OH,25.5,66.0,7.0,16.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-125,246.0,3,2016-02-12 17:47:41,1.67,R,Franklin,OH,23.0,80.0,3.0,12.7,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Day
+A-126,201.0,3,2016-02-12 20:04:00,0.94,R,Franklin,OH,19.0,71.0,5.0,24.2,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-127,201.0,3,2016-02-12 20:12:00,0.94,R,Franklin,OH,19.0,71.0,5.0,24.2,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-128,201.0,3,2016-02-12 20:41:00,2.79,R,Franklin,OH,19.9,62.0,10.0,23.0,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-129,201.0,3,2016-02-12 23:48:00,0.01,R,Franklin,OH,16.0,68.0,10.0,13.8,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-130,201.0,3,2016-02-13 11:05:00,0.01,R,Franklin,OH,10.0,44.0,10.0,11.5,Partly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-131,201.0,3,2016-02-13 11:05:21,0.01,R,Medina,OH,8.1,61.0,10.0,13.8,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-132,201.0,2,2016-02-13 11:17:01,0.01,L,Richland,OH,7.0,58.0,10.0,11.5,Clear,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-133,201.0,3,2016-02-13 11:25:42,0.01,R,Miami,OH,10.9,51.0,10.0,9.2,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-134,241.0,3,2016-02-13 12:56:31,0.01,R,Franklin,OH,12.9,43.0,10.0,16.1,Mostly Cloudy,False,False,False,False,True,False,False,False,False,False,False,False,False,Day
+A-135,201.0,3,2016-02-13 12:55:47,0.01,R,Franklin,OH,12.9,43.0,10.0,16.1,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-136,201.0,3,2016-02-14 10:13:00,0.01,R,Franklin,OH,10.0,70.0,10.0,5.8,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-137,201.0,3,2016-02-14 10:49:23,0.01,R,Franklin,OH,12.9,65.0,10.0,10.4,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-138,241.0,3,2016-02-14 10:41:57,0.01,R,Franklin,OH,12.9,65.0,10.0,10.4,Scattered Clouds,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-139,201.0,3,2016-02-14 18:15:23,0.01,R,Franklin,OH,15.8,79.0,0.5,10.4,Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-140,241.0,3,2016-02-14 19:17:01,0.01,R,Franklin,OH,17.6,86.0,1.0,,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-141,201.0,2,2016-02-15 04:53:47,0.01,R,Clinton,OH,23.0,96.0,2.5,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-142,201.0,2,2016-02-15 05:22:00,0.01,L,Montgomery,OH,23.0,92.0,1.5,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-143,241.0,3,2016-02-15 05:42:25,0.71,R,Franklin,OH,21.9,89.0,5.0,5.8,Light Freezing Drizzle,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-144,201.0,3,2016-02-15 06:36:00,0.01,R,Franklin,OH,22.8,96.0,3.0,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-145,241.0,2,2016-02-15 07:02:39,2.04,R,Franklin,OH,23.0,86.0,3.0,5.8,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-146,201.0,3,2016-02-15 07:17:51,0.01,L,Montgomery,OH,23.0,96.0,0.2,5.8,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-147,241.0,2,2016-02-15 07:15:56,0.0,L,Montgomery,OH,24.1,98.0,1.5,5.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-148,201.0,3,2016-02-15 07:07:00,0.01,R,Franklin,OH,24.8,100.0,1.5,5.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-149,201.0,3,2016-02-15 07:23:58,0.01,R,Montgomery,OH,24.8,100.0,1.5,2.3,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-150,241.0,2,2016-02-15 07:28:24,0.01,R,Montgomery,OH,24.1,96.0,0.8,4.6,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-151,201.0,2,2016-02-15 07:37:49,0.0,L,Cuyahoga,OH,21.0,85.0,4.0,11.5,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-152,241.0,3,2016-02-15 07:46:58,0.01,R,Montgomery,OH,24.1,96.0,0.8,4.6,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-153,241.0,3,2016-02-15 07:52:29,0.01,R,Montgomery,OH,26.1,92.0,4.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-154,241.0,2,2016-02-15 08:00:58,0.01,L,Franklin,OH,24.1,91.0,1.0,5.8,Light Freezing Drizzle,False,False,False,False,False,False,False,False,True,False,False,True,False,Day
+A-155,241.0,2,2016-02-15 08:11:33,0.01,L,Montgomery,OH,25.0,96.0,0.8,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-156,241.0,2,2016-02-15 08:10:15,0.01,R,Franklin,OH,24.1,91.0,1.0,5.8,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-157,201.0,2,2016-02-15 08:15:01,0.0,R,Summit,OH,23.0,85.0,2.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-158,201.0,2,2016-02-15 08:31:47,0.01,R,Franklin,OH,26.1,88.0,1.0,5.8,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-159,201.0,2,2016-02-15 08:39:04,0.0,L,Montgomery,OH,27.0,98.0,2.5,3.5,Light Freezing Drizzle,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-160,201.0,2,2016-02-15 11:31:02,0.01,R,Montgomery,OH,32.0,100.0,1.5,5.8,Overcast,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-161,201.0,2,2016-02-15 12:30:47,0.01,R,Licking,OH,32.0,85.0,5.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-162,201.0,2,2016-02-15 12:34:50,0.01,R,Montgomery,OH,32.0,100.0,4.0,5.8,Overcast,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-163,201.0,2,2016-02-15 12:53:44,0.01,R,Franklin,OH,30.9,89.0,2.0,8.1,Mostly Cloudy,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-164,201.0,1,2016-02-15 17:22:10,0.0,R,Cuyahoga,OH,33.1,82.0,7.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-165,201.0,2,2016-02-15 18:27:18,0.01,R,Franklin,OH,33.6,94.0,7.0,3.5,Light Drizzle,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-166,201.0,3,2016-02-15 19:37:18,0.01,R,Franklin,OH,32.9,100.0,1.8,,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-167,201.0,2,2016-02-15 21:09:25,0.0,R,Crawford,OH,32.0,100.0,0.5,5.8,Fog,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-168,241.0,3,2016-02-16 04:05:51,0.01,R,Franklin,OH,32.0,100.0,1.2,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-169,201.0,3,2016-02-16 04:32:29,0.01,R,Summit,OH,34.0,89.0,1.2,6.9,Light Snow,False,False,False,False,True,False,False,False,False,False,False,False,False,Night
+A-170,201.0,3,2016-02-16 05:22:24,0.01,R,Franklin,OH,32.2,100.0,3.0,6.9,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-171,201.0,2,2016-02-16 05:37:52,0.0,R,Franklin,OH,32.0,99.0,2.5,5.8,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-172,241.0,3,2016-02-16 06:05:20,0.01,R,Franklin,OH,33.1,96.0,5.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-173,201.0,3,2016-02-16 06:17:32,0.01,R,Franklin,OH,33.1,96.0,5.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-174,201.0,2,2016-02-16 06:32:55,0.01,R,Franklin,OH,32.0,96.0,5.0,11.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-175,201.0,2,2016-02-16 06:29:15,0.01,R,Franklin,OH,32.0,92.0,2.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-176,201.0,2,2016-02-16 06:39:15,0.0,L,Montgomery,OH,30.9,96.0,2.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-177,201.0,3,2016-02-16 06:34:11,1.65,R,Franklin,OH,32.2,100.0,4.0,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-178,341.0,3,2016-02-16 06:47:00,0.01,R,Cuyahoga,OH,32.0,92.0,1.8,8.1,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-179,201.0,2,2016-02-16 06:50:07,0.01,R,Montgomery,OH,32.0,88.0,3.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-180,201.0,2,2016-02-16 06:50:44,0.01,R,Franklin,OH,32.0,99.0,7.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Night
+A-181,201.0,3,2016-02-16 07:02:31,0.01,R,Franklin,OH,32.0,100.0,3.0,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-182,241.0,2,2016-02-16 07:10:35,0.01,R,Pickaway,OH,32.0,99.0,7.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-183,201.0,2,2016-02-16 07:12:17,0.01,R,Franklin,OH,32.0,100.0,3.0,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Night
+A-184,201.0,2,2016-02-16 07:29:07,0.01,R,Montgomery,OH,30.0,100.0,2.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-185,201.0,3,2016-02-16 07:52:41,0.01,R,Franklin,OH,32.0,96.0,3.0,9.2,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-186,201.0,2,2016-02-16 07:55:23,0.01,L,Richland,OH,30.0,100.0,5.0,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-187,201.0,3,2016-02-16 07:56:09,0.01,L,Summit,OH,34.0,89.0,1.8,6.9,Light Snow,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-188,241.0,3,2016-02-16 07:58:47,0.01,R,Franklin,OH,32.0,88.0,5.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-189,201.0,2,2016-02-16 08:13:51,0.01,R,Franklin,OH,32.0,96.0,3.0,9.2,Overcast,False,False,False,False,False,False,False,False,True,False,False,False,False,Day
+A-190,241.0,2,2016-02-16 08:20:32,1.65,R,Adams,OH,30.9,100.0,1.0,9.2,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-191,241.0,3,2016-02-16 08:26:30,0.01,L,Franklin,OH,32.0,100.0,2.5,3.5,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-192,201.0,2,2016-02-16 08:36:20,0.01,R,Montgomery,OH,30.0,96.0,1.5,6.9,Overcast,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-193,201.0,3,2016-02-16 08:42:17,0.01,R,Franklin,OH,32.0,88.0,4.0,8.1,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-194,201.0,2,2016-02-16 08:41:46,0.01,R,Franklin,OH,32.0,97.0,3.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-195,241.0,2,2016-02-16 08:57:31,0.01,R,Franklin,OH,32.0,96.0,2.5,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-196,201.0,2,2016-02-16 10:03:00,0.01,R,Franklin,OH,33.1,92.0,2.5,10.4,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-197,201.0,2,2016-02-16 10:58:52,0.0,R,Greene,OH,31.1,88.0,6.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
+A-198,201.0,2,2016-02-16 11:12:18,0.01,R,Montgomery,OH,30.9,76.0,6.0,9.2,Haze,False,False,False,False,False,False,False,False,False,False,False,True,False,Day
+A-199,201.0,2,2016-02-16 11:11:35,0.01,R,Montgomery,OH,30.0,92.0,1.8,5.8,Light Snow,False,False,True,False,False,False,False,False,False,False,False,True,False,Day
+A-200,201.0,2,2016-02-16 11:10:17,0.0,L,Montgomery,OH,31.1,88.0,6.0,5.8,Overcast,False,False,False,False,False,False,False,False,False,False,False,False,False,Day
