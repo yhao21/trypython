@@ -1,0 +1,48 @@
+1.  避免因变量名相同，循环后模板被运算值覆盖
+
+    通过外部传入url给指定函数A，然后通过for循环生成带页码url如何避免出现循环后的url为：coinmarketcap/1/2/3/..../n/
+    在主函数接收到外部传入的url时将这个url赋值给一个新的变量，如front_url。
+    然后将front_url传入for循环中，将生成带页码的完整url赋值给变量full_url
+
+    核心思想，避免因变量名相同导致运算后的值覆盖掉该变量原本的值。
+    错误示范：
+        page_download中的url是外部传入的，现在传入到这个函数中
+
+        url = 'http://coinmarketcap.com/'
+        start_page = 1
+        end_page = 3
+        def page_download(url, start_page, end_page):
+            for page_number in range(start_page, end_page + 1):
+                url = url + str(page_number)
+                print(url)
+
+    这种做法的错误就是因为变量名重复，导致初始url模板（'http://coinmarketcap.com/'）被运算后的值覆盖。。
+    就会出现url = coinmarketcap/1/2/3/..../n/
+    后面数字越来越多。
+
+    解决方法1：
+            url = 'http://coinmarketcap.com/'
+            start_page = 1
+            end_page = 3
+            def page_download(url, start_page, end_page):
+                for page_number in range(start_page, end_page + 1):
+                    full_url = url + str(page_number)
+                    print(full_url)
+
+            这种方法在变的永远都是full_url而不是url本身
+
+    解决方法2：
+            url = 'http://coinmarketcap.com/'
+            url = front_url
+            start_page = 1
+            end_page = 3
+            def page_download(url, start_page, end_page):
+                for page_number in range(start_page, end_page + 1):
+                    url = front_url + str(page_number)
+                    print(full_url)
+
+            这里在变的永远是url，而front_url作为模板永远不变。
+            两种方法都是基于统一思路。殊途同归
+
+
+2.

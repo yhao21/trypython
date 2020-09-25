@@ -1,0 +1,515 @@
+/*-------------------------------------
+    Reset
+---------------------------------------*/
+
+/******Basic settings**********/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+img{
+  border: 0px;
+}
+a{
+  text-decoration: none;
+}
+body{
+    font-family: 'Roboto', sans-serif; color: #444444;
+}
+.font-preloader{
+  font-family:'Roboto';
+  visibility:hidden;
+  width:0; 
+  height:0;
+}
+#frame_one, #frame_two,#frame_three,#frame_four,#frame_five {
+  width: 100%;
+  height: 100%;
+}
+
+/*-------------------------------------
+  Layout
+---------------------------------------*/
+
+#ad {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#banner {
+  position: absolute;
+  background: #eeeeee;
+  display: block;
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  cursor: pointer;
+  visibility: hidden; 
+  border: 1px solid #666666;
+  -webkit-box-sizing: border-box;  
+          box-sizing: border-box;  
+}
+
+#clickTAG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.ie-fallback{
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+/*-------------------------------------
+  Frame One frame duration: 3.6s
+---------------------------------------*/
+
+.title1-1 {
+font-size: 30px;
+    line-height: 31px;
+    font-weight: 300;
+    color: #444444;
+    text-align: center;
+    top: 88px;
+    left: 2px;
+    width: 100%;
+    letter-spacing: 0.23em;
+    position: absolute;
+    text-transform: uppercase;
+}
+.title1-2 {
+font-size: 32px;
+    line-height: 63px;
+    text-align: center;
+    color: #B7295A;
+    font-weight: 300;
+    top: 105px;
+    left: 21px;
+    position: absolute;
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+}
+.title1-2 span {
+  display: block;
+  font-size: 30px;
+  color: #B7295A;
+  line-height: 30px;
+  text-transform: uppercase;
+
+}
+.dell-logo_w {
+  left:0px;
+  top:0px;
+  position: absolute;
+}
+.vendor-logo {
+  position: absolute;
+	top:0px;
+	left:0px;
+  z-index: 1;
+}
+.first-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #007db8;
+}
+
+.white-bg {
+  position: absolute;
+  width: 300px;
+  height: 115px;
+  top: 65px;
+  background: #fff;
+  opacity: 0.75;
+}
+.cta{
+  position: absolute;
+  color: #B7295A;
+  text-align: center;
+  background: #ffffff;
+  right: 10px;
+  bottom: 7px;
+  display: block;
+  z-index: 99;
+  padding: 7px 10px 6px 9px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bolder;
+  vertical-align: middle;
+
+}
+@-moz-document url-prefix() {
+  .cta {padding: 6px 10px 7px 10px;}
+}
+
+/*-------------------------------------
+  Frame two  frame duration: 2.2s
+---------------------------------------*/
+
+.bg {
+  left:0px;
+  top:0px;
+  position: absolute;
+}
+.dell-logo {
+  left:0px;
+  top:0px;
+  position: absolute;
+}
+
+.cta2{
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+  background: #B7295A;
+  right: 10px;
+  bottom: 7px;
+  display: block;
+  z-index: 99;
+  padding: 7px 10px 6px 9px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bolder;
+  vertical-align: middle;
+
+}
+@-moz-document url-prefix() {
+  .cta2 {padding: 6px 10px 7px 10px;}
+}
+
+
+.title2-1 {
+  width: 245px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #444444;
+  font-weight: 300;
+  top: 15px;
+  left: 18px;
+  position: absolute;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+}
+
+.product1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/*-------------------------------------
+  Frame Three  frame duration: 3.1s
+---------------------------------------*/
+
+
+.title3-1 {
+  width: 245px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #444444;
+  font-weight: 300;
+  top: 15px;
+  left: 3px;
+  position: absolute;
+  letter-spacing: 0.1em;
+  
+}
+.title3-2 {
+  width: 145px;
+  font-size: 11px;
+  line-height: 14px;
+  text-align: center;
+  color: #444444;
+  font-weight: 400;
+  bottom: 8px;
+  left: 47px;
+  position: absolute;
+}
+
+.title3-2 span {
+font-size: 9px;
+line-height:9px;
+font-weight: 300;
+}
+
+.product2 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+/*-------------------------------------
+ Frame Four  frame duration: 3.1s
+---------------------------------------*/
+.ces3 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.title4-1 {
+  width: 245px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #444444;
+  font-weight: 300;
+  top: 15px;
+  left: 9px;
+  position: absolute;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+}
+
+
+.title4-1 span {
+  text-transform: lowercase;
+}
+.title4-2 {
+  width: 145px;
+  font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #444444;
+    top: 202px;
+    left: 66px;
+    position: absolute;
+}
+
+.title4-2 span {
+font-size: 9px;
+line-height:9px;
+font-weight: 300;
+}
+.product3 {
+  position: absolute;
+  top: 0px;
+  left:0px;
+}
+
+
+/*-------------------------------------
+  Frame Five  frame duration: 3.2s
+---------------------------------------*/
+
+.title5 {
+    width: 202px;
+    font-size: 27px;
+    line-height: 21px;
+    text-align: center;
+    color: #444444;
+    font-weight: 300;
+    top: 14px;
+    left: 27px;
+    position: absolute;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.title5 span {
+display: block;
+    font-size: 28px;
+    line-height: 41px;
+    letter-spacing: 3px;
+    color: #B7295A;
+    text-transform: uppercase;
+
+}
+
+.product4 {
+      position: absolute;
+    top: -1px;
+    left: -1px;
+}
+.vendor-copy {
+  position: absolute;
+  left: 63px;
+  font-size: 9px;
+  line-height: 9px;
+  font-weight: 300;
+  color: #444444;
+  bottom: 7px;
+}
+
+
+.frame-5-text_box{
+        font-size: 12px;
+    line-height: 13px;
+    text-align: left;
+    color: #444444;
+    top: 95px;
+    left: 173px;
+    width: 188px;
+    position: absolute;
+}
+.frame-5-text_box .promo-text{
+  font-size: 9px;
+  line-height:15px;
+  font-weight: 500;
+  color: #444444;
+}
+.promo-text span{
+  font-size: 9px;
+  font-weight: 700;
+  color: #B7295A;
+}
+.frame-5-text_box .dollar{
+  font-size: 10px;
+  line-height:10px;
+  font-weight: 700;
+  color: #B7295A;
+}
+.frame-5-text_box .price{
+  font-size: 20px;
+  line-height:20px;
+  font-weight: 700;
+  color: #B7295A;
+}
+.price sup{
+  font-size: 9px;
+  line-height:9px;
+
+}
+.frame-5-text_box .small-price{
+  font-size: 10px;
+  line-height:12px;
+  font-weight: 700;
+  color: #B7295A;
+  margin-top:-21px;
+  margin-left:46px;
+}
+
+.frame-5-text_box .pname{
+    font-size: 16px;
+    line-height: 19px;
+  font-weight: 700;
+}
+.frame-5-text_box .intel-text {
+  width: 120px;
+  font-size: 12px;
+  line-height:13px;
+  font-weight: 300;
+}
+
+.frame-5-text_box .free_text{
+  width: 100px;
+  font-size: 9px;
+  line-height:10px;
+  font-weight: bold;
+  color: #444444;
+  margin-top: 2px;
+}
+.vio {
+        position: absolute;
+    top: 79px;
+    left: 8px;
+}
+
+/*Roll over*/
+#roll-cta {
+  position: absolute;
+  color: #444;
+  bottom: 39px;
+  left: 208px;
+  z-index: 99999;
+  width: 80px;
+  height: 15px;
+
+
+}
+#legal {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  background:#eeeeee;
+  top:-1000px;
+  z-index: 999;
+}
+#legal-text {
+  position: absolute;
+  color: #444;
+  width: 295px;
+  height: 150px;
+    font-size: 10px;
+    line-height: 12px;
+  padding: 75px 13px;
+
+}
+#rolltext {
+  position: absolute;
+  z-index: 9;
+  bottom: 39px;
+  right: 10px;
+  font-size: 9px;
+}
+.product-name {
+    /* width: 245px; */
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #444444;
+    top: 202px;
+    left: 78px;
+    position: absolute;
+    
+  }
+
+.monitor {
+		  width: 245px;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  color: #444444;
+   top: 229px;
+  left: -10px;
+  position: absolute;
+
+}
+
+.intel-copy {
+font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #444444;
+    /* font-weight: 300; */
+    top: 228px;
+    left: 61px;
+    position: absolute;
+    /* letter-spacing: 0.1em; */
+}
+
+.product-name1 {
+	font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #444444;
+    top: 202px;
+    left: 90px;
+    position: absolute;
+}

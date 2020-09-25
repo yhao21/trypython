@@ -1,0 +1,9 @@
+1. cloud computing: 亚马逊aws是云linux服务器，，，，
+                    linode
+2. install Linux (Ubentu) in Windows: Search "Ubentu" in windows store.
+
+3. tmux终端复用
+
+4. python中的进度条包。可以显示进度：package：tqdm （install through pip)
+
+

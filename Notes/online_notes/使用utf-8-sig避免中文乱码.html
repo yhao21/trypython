@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://blog.csdn.net/zhuzuwei/article/details/80890007 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="canonical" href="https://blog.csdn.net/zhuzuwei/article/details/80890007">
+    
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="report" content="{&quot;pid&quot;:&quot;blog&quot;}">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="https://blog.csdn.net/zhuzuwei/article/details/80890007#">
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+        <meta name="csdn-baidu-search" content="{&quot;autorun&quot;:true,&quot;install&quot;:true,&quot;keyword&quot;:&quot;pandas 之 to_csv 保存数据出现中文乱码问题及解决办法_zhuzuwei的博客-CSDN博客&quot;}">
+    
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>pandas 之 to_csv 保存数据出现中文乱码问题及解决办法_zhuzuwei的博客-CSDN博客</title>
+    <meta name="description" content="1. 使用scrapy框架爬取了一些汽车评价保存在csv文件中，但是直接打开时乱码了。2.使用pan">
+    <script src="./使用utf-8-sig避免中文乱码_files/push.js.download"></script><script type="text/javascript" async="" src="./使用utf-8-sig避免中文乱码_files/trackad.js.download"></script><script type="text/javascript" async="" src="./使用utf-8-sig避免中文乱码_files/saved_resource"></script><script src="./使用utf-8-sig避免中文乱码_files/hm.js.download"></script><script src="./使用utf-8-sig避免中文乱码_files/blog.js.download" type="text/javascript"></script>
+        
+                    <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/detail-e2af80a482.min.css">
+                            <script type="application/ld+json">{"@context":"https:\/\/ziyuan.baidu.com\/contexts\/cambrian.jsonld","@id":"https:\/\/blog.csdn.net\/zhuzuwei\/article\/details\/80890007","appid":1638831770136827,"title":"pandas \u4e4b to_csv \u4fdd\u5b58\u6570\u636e\u51fa\u73b0\u4e2d\u6587\u4e71\u7801\u95ee\u9898\u53ca\u89e3\u51b3\u529e\u6cd5_zhuzuwei\u7684\u535a\u5ba2-CSDN\u535a\u5ba2","pubDate":"2020-01-29T13:48:31","upDate":"2018-07-02T21:29:03"}</script>
+    
+            <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/skin-yellow-db01cea9f7.min.css">
+    
+<!--    自定义皮肤样式-->
+    
+    <script type="text/javascript">
+        var username = "zhuzuwei";
+        var blog_address = "https://blog.csdn.net/zhuzuwei";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/zhuzuwei/article/details/80890007"
+        var blogUrl = "https://blog.csdn.net/";
+
+        var curSkin = "skin-yellow";
+        // 收藏所需数据
+        var articleTitle = "pandas 之 to_csv 保存数据出现中文乱码问题及解决办法";
+        var articleDesc = "1. 使用scrapy框架爬取了一些汽车评价保存在csv文件中，但是直接打开时乱码了。2.使用pan";
+
+        var articleTitles = "pandas 之 to_csv 保存数据出现中文乱码问题及解决办法_zhuzuwei的博客-CSDN博客";
+        
+        var nickName = "zhuzuwei";
+        var isCorporate = false;
+        var subDomainBlogUrl = "https://blog.csdn.net/"
+        var digg_base_url = "https://blog.csdn.net/zhuzuwei";
+        var articleDetailUrl = "https://blog.csdn.net/zhuzuwei/article/details/80890007";
+        var isShowThird = "1"
+    </script>
+    <script src="./使用utf-8-sig避免中文乱码_files/jquery-1.9.1.min.js.download" type="text/javascript"></script>
+    <!--js引用-->
+            <script src="./使用utf-8-sig避免中文乱码_files/saved_resource(1)" type="text/javascript"></script>
+    <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<body class="nodata "><div id="csdn-toolbar" class="csdn-toolbar tb_disnone  festival">        <div class="container row center-block " id="csdn_container_tool">          <ul class="pull-left left-menu clearfix" id="nav-left-menu">            <li>              <a href="https://www.csdn.net/" title="欢度新春"><img src="./使用utf-8-sig避免中文乱码_files/csdnlogo_ChineseNewYear.gif"></a>            </li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://www.csdn.net/&quot;,&quot;extend1&quot;:&quot;首页&quot;}"><a href="https://www.csdn.net/" class="toolbar_to_feed" title="首页" style="margin-left:0">首页</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/&quot;,&quot;extend1&quot;:&quot;博客&quot;}"><a href="https://blog.csdn.net/" class="toolbar_to_feed" title="博客">博客</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://edu.csdn.net&quot;,&quot;extend1&quot;:&quot;学院&quot;}" class="app-control app-edu"><a class="link-title" href="https://edu.csdn.net/" title="学院">学院</a>              <div class="appControl">              <span class="eduwx">                <img src="./使用utf-8-sig避免中文乱码_files/eduwxfix.png">                <em>CSDN学院</em>              </span>              </div>            </li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://download.csdn.net&quot;,&quot;extend1&quot;:&quot;下载&quot;}"><a href="https://download.csdn.net/" title="下载">下载</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://bbs.csdn.net&quot;,&quot;extend1&quot;:&quot;论坛&quot;}"><a href="https://bbs.csdn.net/" title="论坛">论坛</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://ask.csdn.net&quot;,&quot;extend1&quot;:&quot;问答&quot;}"><a href="https://ask.csdn.net/" title="问答">问答</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://huiyi.csdn.net/&quot;,&quot;extend1&quot;:&quot;活动&quot;}"><a href="https://huiyi.csdn.net/" title="活动">活动</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://spec.csdn.net/&quot;,&quot;extend1&quot;:&quot;专题&quot;}"><a href="https://spec.csdn.net/" title="专题">专题</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://job.csdn.net&quot;,&quot;extend1&quot;:&quot;招聘&quot;}"><a href="http://job.csdn.net/" title="招聘">招聘</a></li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://www.csdn.net/apps/download?code=pc_1555579859&quot;,&quot;extend1&quot;:&quot;APP&quot;}" class="app-control app-app"><a class="link-title" href="https://www.csdn.net/apps/download" data-report-query="code=pc_1555579859" title="APP">APP</a>              <div class="appControl">              <span>                <img src="./使用utf-8-sig避免中文乱码_files/csdnqr@2x.png">                <em>CSDN</em>              </span>              </div>            </li>            <li data-report-click="{&quot;mod&quot;:&quot;popu_336&quot;,&quot;dest&quot;:&quot;https://mall.csdn.net/vip&quot;,&quot;extend1&quot;:&quot;VIP会员&quot;}" class="vip-caise"><a href="https://mall.csdn.net/vip" title="VIP会员">VIP会员</a><span class="vip-totast">续费8折</span></li><li><a href="https://bss.csdn.net/m/topic/blog_star2019" title="博客之星">博客之星</a></li><div class="search_bar onlySearch searchUser" data-report-click="{&quot;mod&quot;:&quot;popu_369&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/&quot;}" data-report-view="{&quot;mod&quot;:&quot;popu_369&quot;,&quot;dest&quot;:&quot;https://so.csdn.net/so/&quot;}">                    <input type="text" class="input_search" name="" autocomplete="off" value="Python工程师" id="toolber-keyword" placeholder="搜博主文章">                    <a href="https://so.csdn.net/so/" target="_blank" class="btn-nobg-noborder btn-search">                    <img src="./使用utf-8-sig避免中文乱码_files/csdn-sou.png">                    </a>        <div id="search_bar__drop-down-menu" class="drop-down-menu">          <dl class="hot-search">            <dt class="hot-search-menu">              <span>热门搜索</span>            </dt>          </dl>          <dl class="search-history">            <dt class="search-history-menu">              <span class="search-history-title">搜索记录</span>              <span class="clear">清空</span>            </dt>          </dl>        </div></div>          </ul>          <div class="pull-right onlyUser searchUser login-wrap unlogin">            <ul class="btns">              <li class="write-bolg-btn" data-report-click="{&quot;mod&quot;:&quot;popu_370&quot;,&quot;dest&quot;:&quot;https://mp.csdn.net/postedit&quot;}" data-report-view="{&quot;mod&quot;:&quot;popu_370&quot;,&quot;dest&quot;:&quot;https://mp.csdn.net/postedit&quot;}"><a class="" href="https://mp.csdn.net/postedit" target="_blank" id="blogClick">              <i class="csdn-write"></i>              <span>写博客</span></a>              </li><li class="gitChat upload msgBox" id="msgBox">              <a class="" id="remind" href="https://blog.csdn.net/zhuzuwei/article/details/80890007#"><i class="message"></i><div class="toolbar-circle" id="msg-circle"></div></a>                <div class="msgList" id="msgList">                  <dd><a href="https://blog.csdn.net/zhuzuwei/article/details/80890007#" id="msgList-notice">公告<em class="notice"></em></a></dd>                  <div id="msgList-other">                  <dd><a href="https://i.csdn.net/#/msg/index">评论<em class="comment"></em></a></dd>                  <dd><a href="https://i.csdn.net/#/msg/attention">关注<em class="follow"></em></a></dd>                  <dd><a href="https://i.csdn.net/#/msg/like">点赞<em class="thumb_up"></em></a></dd>                  <dd><a href="https://im.csdn.net/im/main.html">私信<em class="im"></em></a></dd>                  <dd><a href="https://i.csdn.net/#/msg/answer">回答<em class="invitation"></em></a></dd>                  <dd><a href="https://i.csdn.net/#/msg/notice">系统通知<em class="system"></em></a></dd>                  <dd><a href="https://i.csdn.net/#/msg/setting">消息设置</a></dd>                  </div>                </div>                <a href="https://i.csdn.net/#/msg/notice" class="msg-toast" id="msgToastText">你有一张VIP限时优惠券哦</a>              </li>              <li class="userinfo"><a href="https://passport.csdn.net/account/login">登录/注册</a><span></span>              </li>              <li class="userLogin">                <div class="loginCenter"><a href="https://i.csdn.net/" target="_blank"><img class="login_img" src="./使用utf-8-sig避免中文乱码_files/100x100.jpg"></a></div>                <div class="userControl">                <div class="bord">                <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://www.csdn.net/nav/watchers&quot;,&quot;extend1&quot;:&quot;我的关注&quot;}"><i class="pull_icon pull_icon1"></i><a href="https://www.csdn.net/nav/watchers" target="_blank">我的关注</a></div>                <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://i.csdn.net/#/uc/collection-list&quot;,&quot;extend1&quot;:&quot;我的收藏&quot;}"><i class="pull_icon pull_icon2"></i><a href="https://i.csdn.net/#/uc/collection-list" target="_blank">我的收藏</a></div>                <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://i.csdn.net/#/uc/profile&quot;,&quot;extend1&quot;:&quot;个人中心&quot;}"><i class="pull_icon pull_icon4"></i><a href="https://i.csdn.net/#/uc/profile" target="_blank">个人中心</a></div>                <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://i.csdn.net/#/account/index&quot;,&quot;extend1&quot;:&quot;帐号设置&quot;}"><i class="pull_icon pull_icon7"></i><a href="https://i.csdn.net/#/account/index" target="_blank">帐号设置</a></div>                </div>                  <div class="bord">                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/&quot;,&quot;extend1&quot;:&quot;我的博客&quot;}"><i class="pull_icon pull_icon5"></i><a href="https://blog.csdn.net/" target="_blank">我的博客</a></div>                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://mp.csdn.net/&quot;,&quot;extend1&quot;:&quot;管理博客&quot;}"><i class="pull_icon pull_icon6"></i><a href="https://mp.csdn.net/" target="_blank">管理博客</a></div>                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://edu.csdn.net/mycollege&quot;,&quot;extend1&quot;:&quot;我的学院&quot;}"><i class="pull_icon pull_icon12"></i><a href="https://edu.csdn.net/mycollege" target="_blank">我的学院</a></div>                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://download.csdn.net/my/downloads&quot;,&quot;extend1&quot;:&quot;我的下载&quot;}"><i class="pull_icon pull_icon13"></i><a href="https://download.csdn.net/my/downloads" target="_blank">我的下载</a></div><div><i class="pull_icon pull_icon14"></i><a href="https://huiyi.csdn.net/activity/myorder" target="_blank">我的活动</a></div>                  </div>                  <div class="bord">                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://my.csdn.net/my/score&quot;,&quot;extend1&quot;:&quot;我的C币&quot;}"><i class="pull_icon pull_icon8"></i><a href="https://my.csdn.net/my/score" target="_blank">我的C币</a></div>                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://order.csdn.net/myorder&quot;,&quot;extend1&quot;:&quot;订单中心&quot;}"><i class="pull_icon pull_icon9"></i><a href="https://order.csdn.net/myorder" target="_blank">订单中心</a></div>                  </div>                  <div class="bord">                  <div data-report-click="{&quot;mod&quot;:&quot;popu_789&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/blogdevteam/article/details/103478461&quot;,&quot;extend1&quot;:&quot;帮助&quot;}"><i class="pull_icon pull_icon10"></i><a href="https://blog.csdn.net/blogdevteam/article/details/103478461" target="_blank">帮助</a></div>                  <div><i class="pull_icon pull_icon11"></i><a href="javascript:void(0);" class="logout">退出</a></div>                  </div>                </div>                <div class="guo_tip_box">关注和收藏在这里</div>              </li>            </ul>          </div>        </div>    </div> 
+    <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="./使用utf-8-sig避免中文乱码_files/content_toolbar.js.download" type="text/javascript" domain="https://blog.csdn.net/"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/paging-e040f0c7c8.css">
+
+<script type="text/javascript">
+	var NEWS_FEED = function(){}
+</script>
+
+<link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/chart-3456820cac.css">
+<div class="main_father clearfix d-flex justify-content-center" style="height:100%;"> 
+    <div class="container clearfix" id="mainBox">
+        <div class="space_container"></div>
+        <main>
+            <div class="blog-content-box">
+    <div class="article-header-box">
+        <div class="article-header">
+            <div class="article-title-box">
+                <h1 class="title-article">pandas 之 to_csv 保存数据出现中文乱码问题及解决办法</h1>
+            </div>
+            <div class="article-info-box">
+                <div class="article-bar-top">
+                    <!--文章类型-->
+                    <span class="article-type type-1 float-left">原创</span>                                                                                                                                            <a class="follow-nickName" href="https://me.csdn.net/zhuzuwei" target="_blank" rel="noopener">zhuzuwei</a>
+                    <span class="time">最后发布于2018-07-02 21:29:03                    </span>
+                    <span class="read-count">阅读数 37143</span>
+                    <a id="blog_detail_zk_collection" data-report-click="{&quot;mod&quot;:&quot;popu_823&quot;}">
+                        <svg class="icon">
+                            <use xlink:href="#icon-csdnc-Collection-G"></use>
+                        </svg>
+                        收藏
+                    </a>
+                </div>
+                                <div class="up-time">发布于2018-07-02 21:29:03</div>
+                <div class="slide-content-box">
+                                                        <div class="tags-box artic-tag-box">
+                           <span class="label">分类专栏：</span>
+                                                                                             <a class="tag-link" target="_blank" rel="noopener" href="https://blog.csdn.net/zhuzuwei/category_7186672.html">
+                                       pandas                                   </a>
+                                                                                  </div>
+                                                                                                           <div class="article-copyright">
+                        <span class="creativecommons">
+                            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"></a>
+                            <span>
+                                版权声明：本文为博主原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。                            </span>
+                            <div class="article-source-link2222">
+                                本文链接：<a href="https://blog.csdn.net/zhuzuwei/article/details/80890007">https://blog.csdn.net/zhuzuwei/article/details/80890007</a>
+                            </div>
+                        </span> 
+                        </div>
+                                                                                </div>
+                <div class="operating">
+                                                                <a class="href-article-edit slide-toggle">展开</a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <article class="baidu_pl">
+        <!--python安装手册开始-->
+                <!--python安装手册结束-->
+                <!--####专栏广告位图文切换开始-->
+                                    <!--####专栏广告位图文切换结束-->
+         <div id="article_content" class="article_content clearfix">
+            <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/ck_htmledit_views-833878f763.css">
+                                        <link rel="stylesheet" href="./使用utf-8-sig避免中文乱码_files/ck_htmledit_views-833878f763.css">
+                <div class="htmledit_views" id="content_views">
+                                            <p>1. &nbsp;使用scrapy框架爬取了一些汽车评价保存在csv文件中，但是直接打开时乱码了。</p><p><img src="./使用utf-8-sig避免中文乱码_files/20180702211935320" alt=""><br></p><p>2. 使用pandas读取再使用to_csv()方法重新保存</p><pre><code class="language-python">import pandas as pd
+
+file_name = 'G:/myLearning/pythonML201804/spiderLearning/scrapy_learning/car_comment_crawler/\
+            car_comment_crawler/spiders/haval_all_page3.csv'
+file_name2 = 'G:/myLearning/pythonML201804/spiderLearning/scrapy_learning/car_comment_crawler/\
+            car_comment_crawler/spiders/haval_all_page4.csv'
+file_name3 = 'G:/myLearning/pythonML201804/spiderLearning/scrapy_learning/car_comment_crawler/\
+            car_comment_crawler/spiders/haval_all_page5.csv'
+
+df = pd.read_csv(file_name, encoding='utf-8')
+df</code></pre><p><img src="./使用utf-8-sig避免中文乱码_files/20180702212420951" alt=""></p><p>&nbsp;&nbsp;（1）使用 df.to_csv(file_name2, encoding='utf-8') 后还是编码有问题<br></p><pre><code class="language-python">df.to_csv(file_name2,encoding="utf_8")</code></pre><p><img src="./使用utf-8-sig避免中文乱码_files/20180702212441932" alt=""></p><p>&nbsp; （2）使用 df.to_csv(file_name2, encoding='utf_8_sig') 后中文乱码问题解决了</p><pre><code class="language-python">df.to_csv(file_name3,encoding="utf_8_sig")</code></pre><img src="./使用utf-8-sig避免中文乱码_files/20180702212527625" alt=""><br>                                    </div>
+                                                <div class="more-toolbox">
+                <div class="left-toolbox">
+                    <ul class="toolbox-list">
+                        
+                        <li class="tool-item tool-active is-like "><a href="javascript:;"><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-thumbsup"></use>
+                        </svg><span class="name">点赞</span>
+                        <span class="count">33</span>
+                        </a></li>
+                        <li class="tool-item tool-active is-collection "><a href="javascript:;" data-report-click="{&quot;mod&quot;:&quot;popu_824&quot;}"><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-csdnc-Collection-G"></use>
+                        </svg><span class="name">收藏</span></a></li>
+                        <li class="tool-item tool-active is-share"><a href="javascript:;"><svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-csdnc-fenxiang"></use>
+                        </svg>分享</a></li>
+                        <!--打赏开始-->
+                                                <!--打赏结束-->
+                                                <li class="tool-item tool-more">
+                            <a>
+                            <svg t="1575545411852" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5717" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M179.176 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5718"></path><path d="M509.684 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5719"></path><path d="M846.175 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z" p-id="5720"></path></svg>
+                            </a>
+                            <ul class="more-box">
+                                <li class="item"><a class="article-report">文章举报</a></li>
+                            </ul>
+                        </li>
+                                            </ul>
+                </div>
+                            </div>
+            <div class="person-messagebox">
+                <div class="left-message"><a href="https://blog.csdn.net/zhuzuwei">
+                    <img src="./使用utf-8-sig避免中文乱码_files/3_zhuzuwei" class="avatar_pic" username="zhuzuwei">
+                                            <img src="./使用utf-8-sig避免中文乱码_files/2.png" class="user-years">
+                                    </a></div>
+                <div class="middle-message">
+                                        <div class="title"><span class="tit"><a href="https://blog.csdn.net/zhuzuwei" data-report-click="{&quot;mod&quot;:&quot;popu_379&quot;}" target="_blank">zhuzuwei</a></span>
+                                            </div>
+                    <div class="text"><span>发布了128 篇原创文章</span> · <span>获赞 138</span> · <span>访问量 54万+</span></div>
+                </div>
+                                <div class="right-message">
+                                            <a href="https://bbs.csdn.net/topics/395527608" target="_blank" class="btn btn-sm btn-red-hollow bt-button personal-messageboard">他的留言板
+                        </a>
+                                                            <a class="btn btn-sm  bt-button personal-watch" data-report-click="{&quot;mod&quot;:&quot;popu_379&quot;}">关注</a>
+                                    </div>
+                            </div>
+                    </div>
+    </article>
+    
+</div>
+
+
+            <div class="hide-article-box hide-article-pos text-center">
+            <a class="btn-readmore" data-report-view="{&quot;mod&quot;:&quot;popu_376&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/zhuzuwei/article/details/80890007&quot;,&quot;strategy&quot;:&quot;readmore&quot;}" data-report-click="{&quot;mod&quot;:&quot;popu_376&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/zhuzuwei/article/details/80890007&quot;,&quot;strategy&quot;:&quot;readmore&quot;}">
+                展开阅读全文
+                <svg class="icon chevrondown" aria-hidden="true">
+                    <use xlink:href="#csdnc-chevrondown"></use>
+                </svg>
+            </a>
+        </div>
+    <script>
+    $("#blog_detail_zk_collection").click(function(){
+        window.csdn.articleCollection()
+    })
+</script>
+
+            <div id="dmp_ad_58"><div id="kp_box_58" data-pid="58"><script type="text/javascript">
+        (function() {
+            var s = "_" + Math.random().toString(36).slice(2);
+            document.write('<div style="" id="' + s + '"></div>');
+            (window.slotbydup = window.slotbydup || []).push({
+                id: "u3501897",
+                container: s
+            });
+        })();
+</script><div style="" id="_lm8vdmw5kh"><iframe id="iframeu3501897_0" name="iframeu3501897_0" src="./使用utf-8-sig避免中文乱码_files/ecwm.html" width="900" height="90" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:900px;height:90px" allowtransparency="true"></iframe></div>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="./使用utf-8-sig避免中文乱码_files/c.js.download" async="async" defer="defer">
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=58&amp;a=386&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=aadb9383a27746dda23d37443d60a184"></div></div>            
+            <a id="commentBox" name="commentBox"></a>
+<div class="comment-box">
+	<div class="comment-edit-box d-flex">
+		<a id="commentsedit"></a>
+		<div class="user-img">
+			<a href="javascript:void(0);" target="_blank" rel="noopener">
+				<img class="show_loginbox" src="./使用utf-8-sig避免中文乱码_files/anonymous-User-img.png">
+			</a>
+		</div>
+		<form id="commentform">
+			<input type="hidden" id="comment_replyId">
+			<textarea class="comment-content" name="comment_content" id="comment_content" placeholder="想对作者说点什么" maxlength="1000"></textarea>
+			<div class="opt-box"> <!-- d-flex -->
+				<div id="ubbtools" class="add_code">
+					<a href="https://blog.csdn.net/zhuzuwei/article/details/80890007#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+				</div>
+				<input type="hidden" id="comment_replyId" name="comment_replyId">
+				<input type="hidden" id="article_id" name="article_id" value="80890007">
+				<input type="hidden" id="comment_userId" name="comment_userId" value="">
+				<input type="hidden" id="commentId" name="commentId" value="">
+				<div style="display: none;" class="csdn-tracking-statistics tracking-click" data-report-click="{&quot;mod&quot;:&quot;popu_384&quot;,&quot;dest&quot;:&quot;&quot;}"><a href="https://blog.csdn.net/zhuzuwei/article/details/80890007#" target="_blank" class="comment_area_btn" rel="noopener">发表评论</a></div>
+				<div class="dropdown" id="myDrap">
+					<a class="dropdown-face d-flex align-items-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<div class="txt-selected text-truncate">添加代码片</div>
+					<svg class="icon d-block" aria-hidden="true">
+						<use xlink:href="#csdnc-triangledown"></use>
+					</svg>
+					</a>
+					<ul class="dropdown-menu" id="commentCode" aria-labelledby="drop4">
+						<li><a data-code="html">HTML/XML</a></li>
+						<li><a data-code="objc">objective-c</a></li>
+						<li><a data-code="ruby">Ruby</a></li>
+						<li><a data-code="php">PHP</a></li>
+						<li><a data-code="csharp">C</a></li>
+						<li><a data-code="cpp">C++</a></li>
+						<li><a data-code="javascript">JavaScript</a></li>
+						<li><a data-code="python">Python</a></li>
+						<li><a data-code="java">Java</a></li>
+						<li><a data-code="css">CSS</a></li>
+						<li><a data-code="sql">SQL</a></li>
+						<li><a data-code="plain">其它</a></li>
+					</ul>
+				</div>  
+				<div class="right-box">
+                                        <span id="tip_comment" class="tip">还能输入<em>1000</em>个字符</span>
+					<input type="button" class="btn btn-sm btn-cancel d-none" value="取消回复">
+					<input type="submit" class="btn btn-sm btn-red btn-comment" value="发表评论">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<div class="btn btn-sm btn-link-blue" id="btnMoreComment"></div>
+		</div>
+	</div>
+</div>
+            <div class="recommend-box">
+                                    <div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_39129504/article/details/79859896&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;0&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_39129504/article/details/79859896" target="_blank" rel="noopener" title="解决python中 .to_csv() 的乱码问题">
+		<h4 class="text-truncate oneline">
+				解决python中 .<em>to_csv</em>() 的<em>乱码</em><em>问题</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">04-08</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4769</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_39129504/article/details/79859896" target="_blank" rel="noopener" title="解决python中 .to_csv() 的乱码问题">
+				<span class="desc oneline">解决方法：添加参数&nbsp;encoding='utf_8_sig'df.to_csv('users.csv',encoding='utf_8_sig')</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39129504">来自：	<span class="blog_title"> ymn</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Xw_Classmate/article/details/51940430&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;1&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/Xw_Classmate/article/details/51940430" target="_blank" rel="noopener" title="使用python处理中文csv文件，并让excel正确显示中文（避免乱码）">
+		<h4 class="text-truncate oneline">
+				使用python处理<em>中文</em>csv文件，并让excel正确显示<em>中文</em>（避免<em>乱码</em>）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">07-18</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Xw_Classmate/article/details/51940430" target="_blank" rel="noopener" title="使用python处理中文csv文件，并让excel正确显示中文（避免乱码）">
+				<span class="desc oneline">使用python2处理中文时，经常会出现乱码问题，之前使用python处理中文csv文件时，处理过程程序输出出现了乱码，最后在程序中能够正常显示出中文，但是导出文件时，使用excel打开出现了中文乱码...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Xw_Classmate">来自：	<span class="blog_title"> Oner.wv的专栏</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_39461443/article/details/75303072&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;2&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_39461443/article/details/75303072" target="_blank" rel="noopener" title="关于pandas中,to_csv函数输出的utf8数据用Excel打开是乱码">
+		<h4 class="text-truncate oneline">
+				关于<em>pandas</em>中,<em>to_csv</em>函数输出的utf8<em>数据</em>用Excel打开是<em>乱码</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">07-18</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_39461443/article/details/75303072" target="_blank" rel="noopener" title="关于pandas中,to_csv函数输出的utf8数据用Excel打开是乱码">
+				<span class="desc oneline">正确答案来自于http://blog.csdn.net/glory1234work2115/article/details/53913951df.to_csv(“df.csv”,encoding=’u...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39461443">来自：	<span class="blog_title"> 沐浴在财神爷扎哥的光辉中。。。</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_41663800/article/details/91619082&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;3&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_41663800/article/details/91619082" target="_blank" rel="noopener" title="pandas to_csv输出到文件的中文是乱码的问题">
+		<h4 class="text-truncate oneline">
+				<em>pandas</em> <em>to_csv</em>输出到文件的<em>中文</em>是<em>乱码</em>的<em>问题</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">06-12</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					79</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_41663800/article/details/91619082" target="_blank" rel="noopener" title="pandas to_csv输出到文件的中文是乱码的问题">
+				<span class="desc oneline">听我的： encoding="utf_8_sig"稳的一批</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41663800">来自：	<span class="blog_title"> qq_41663800的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_59" data-pid="59"><script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3491668",
+            container:  s
+        });
+    })();
+</script><div style="" id="_ow6yd23adgo"><iframe id="iframeu3491668_0" name="iframeu3491668_0" src="./使用utf-8-sig避免中文乱码_files/ecwm(1).html" width="962" height="52" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:962px;height:52px" allowtransparency="true"></iframe></div>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="./使用utf-8-sig避免中文乱码_files/c.js.download" async="async" defer="defer"></script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=59&amp;a=78&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=2544f4b146b146029cb7ccc2f30b5688"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/a19990412/article/details/83000232&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;4&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/a19990412/article/details/83000232" target="_blank" rel="noopener" title="pandas.to_csv()中文编码问题">
+		<h4 class="text-truncate oneline">
+				<em>pandas</em>.<em>to_csv</em>()<em>中文</em>编码<em>问题</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-10</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2805</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/a19990412/article/details/83000232" target="_blank" rel="noopener" title="pandas.to_csv()中文编码问题">
+				<span class="desc oneline">简述设置encoding = 'utf_8_sig'就好了~实例：df.to_csv('askci.csv', encoding='utf_8_sig')</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/a19990412">来自：	<span class="blog_title"> 肥宅Sean</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_34072458/article/details/93196733&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;5&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_34072458/article/details/93196733" target="_blank" rel="noopener" title="Excel打开csv文件乱码问题的解决办法">
+		<h4 class="text-truncate oneline">
+				Excel打开csv文件<em>乱码</em><em>问题</em>的<em>解决办法</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-29</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					20</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_34072458/article/details/93196733" target="_blank" rel="noopener" title="Excel打开csv文件乱码问题的解决办法">
+				<span class="desc oneline">excel打开csv 出现乱码怎么解决https://jingyan.baidu.com/article/ac6a9a5e4c681b2b653eacf1.htmlCSV是逗号分隔值的英文缩写，通常都...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34072458">来自：	<span class="blog_title"> weixin_34072458的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/BeforeEasy/article/details/88718957&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;6&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/BeforeEasy/article/details/88718957" target="_blank" rel="noopener" title="pandas输出to_csv 中文乱码问题">
+		<h4 class="text-truncate oneline">
+				<em>pandas</em>输出<em>to_csv</em> <em>中文</em><em>乱码</em><em>问题</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">03-21</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					744</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/BeforeEasy/article/details/88718957" target="_blank" rel="noopener" title="pandas输出to_csv 中文乱码问题">
+				<span class="desc oneline">csv文件存储方式为utf-8控制台输出的是正常的格式但是df2.to_csv(‘sheet-copy.csv’,encoding=‘utf-8’)之后就是乱码的修改了几个encoding格式都不行最...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/BeforeEasy">来自：	<span class="blog_title"> BeforeEasy的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_33589510/article/details/100059454&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;7&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_33589510/article/details/100059454" target="_blank" rel="noopener" title="Kafka实战(三)  - Kafka的自我修养与定位">
+		<h4 class="text-truncate oneline">
+				Kafka实战(三)  - Kafka的自我修养与定位		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-13</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4157</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_33589510/article/details/100059454" target="_blank" rel="noopener" title="Kafka实战(三)  - Kafka的自我修养与定位">
+				<span class="desc oneline">Apache Kafka是消息引擎系统，也是一个分布式流处理平台（Distributed Streaming Platform）Kafka是LinkedIn公司内部孵化的项目。LinkedIn最开始有...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33589510">来自：	<span class="blog_title"> JavaEdge</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Woo_home/article/details/102651639&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;8&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/Woo_home/article/details/102651639" target="_blank" rel="noopener" title="volatile 与 synchronize 详解">
+		<h4 class="text-truncate oneline">
+				volatile 与 synchronize 详解		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-20</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3948</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Woo_home/article/details/102651639" target="_blank" rel="noopener" title="volatile 与 synchronize 详解">
+				<span class="desc oneline">Java支持多个线程同时访问一个对象或者对象的成员变量，由于每个线程可以拥有这个变量的拷贝（虽然对象以及成员变量分配的内存是在共享内存中的，但是每个执行的线程还是可以拥有一份拷贝，这样做的目的是加速程...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Woo_home">来自：	<span class="blog_title"> Woo_home的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_60" data-pid="60"><iframe src="./使用utf-8-sig避免中文乱码_files/saved_resource.html" frameborder="0" width="100%" height="75px" scrolling="no"></iframe><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?d=2&amp;k=&amp;m=EScEyiSpcAHSDSiiLUmLSHcALvXAoipHpXnSAAQibHAELpccbSAcoLLHpSnQnWbUSpptULApESDbXpEUmSSJHbcQnnipALnEntbQ"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/java_sha/article/details/100895297&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;9&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/java_sha/article/details/100895297" target="_blank" rel="noopener" title="从入门到精通，Java学习路线导航（附学习资源）">
+		<h4 class="text-truncate oneline">
+				从入门到精通，Java学习路线导航（附学习资源）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-16</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					7万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/java_sha/article/details/100895297" target="_blank" rel="noopener" title="从入门到精通，Java学习路线导航（附学习资源）">
+				<span class="desc oneline">引言最近也有很多人来向我"请教"，他们大都是一些刚入门的新手，还不了解这个行业，也不知道从何学起，开始的时候非常迷茫，实在是每天回复很多人也很麻烦，所以在这里统一作个回复吧。Java学习路线当然，这里...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/java_sha">来自：	<span class="blog_title"> java_sha的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/lantian_123/article/details/101514976&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;10&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/lantian_123/article/details/101514976" target="_blank" rel="noopener" title="技术人员要拿百万年薪，必须要经历这9个段位">
+		<h4 class="text-truncate oneline">
+				技术人员要拿百万年薪，必须要经历这9个段位		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">08-24</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					5万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/lantian_123/article/details/101514976" target="_blank" rel="noopener" title="技术人员要拿百万年薪，必须要经历这9个段位">
+				<span class="desc oneline">很多人都问，技术人员如何成长，每个阶段又是怎样的，如何才能走出当前的迷茫，实现自我的突破。所以我结合我自己10多年的从业经验，总结了技术人员成长的9个段位，希望对大家的职......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/lantian_123">来自：	<span class="blog_title"> Python之禅的专栏</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+			<div class="recommend-item-box blog-expert-recommend-box">
+			<div class="d-flex">
+				<div class="blog-expert-recommend">
+					<div class="blog-expert">
+						<div class="blog-expert-flexbox"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/ljk126wy/article/details/101064186&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;11&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/ljk126wy/article/details/101064186" target="_blank" rel="noopener" title="Git 天天用 但是 Git 原理你了解吗？">
+		<h4 class="text-truncate oneline">
+				Git 天天用 但是 Git 原理你了解吗？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-20</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					6万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/ljk126wy/article/details/101064186" target="_blank" rel="noopener" title="Git 天天用 但是 Git 原理你了解吗？">
+				<span class="desc oneline">Git 原理做技术一定要知其然知其所以然，意思就是：知道它是这样的，更知道它为什么是这样的。我主要通过4块内容来简单介绍 Git 是原理是什么样的。这4块内容如下：Git 存储目录结构介绍Git 是如...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/ljk126wy">来自：	<span class="blog_title"> ljk126wy的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Hunter808/article/details/102642565&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;12&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/Hunter808/article/details/102642565" target="_blank" rel="noopener" title="Ubuntu 19.10 安装 美化 优化  conky Docker">
+		<h4 class="text-truncate oneline">
+				Ubuntu 19.10 安装 美化 优化  conky Docker		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-22</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Hunter808/article/details/102642565" target="_blank" rel="noopener" title="Ubuntu 19.10 安装 美化 优化  conky Docker">
+				<span class="desc oneline">Ubuntu终极美化1.附上我的截图：</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Hunter808">来自：	<span class="blog_title"> Hunter808的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/csdnnews/article/details/102548475&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;13&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/csdnnews/article/details/102548475" target="_blank" rel="noopener" title="为什么程序员在学习编程的时候什么都记不住？">
+		<h4 class="text-truncate oneline">
+				为什么程序员在学习编程的时候什么都记不住？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-12</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					5万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/csdnnews/article/details/102548475" target="_blank" rel="noopener" title="为什么程序员在学习编程的时候什么都记不住？">
+				<span class="desc oneline">在程序员的职业生涯中，记住所有你接触过的代码是一件不可能的事情！那么我们该如何解决这一问题？作者 |Dylan Mestyanek译者 | 弯月，责编 | 屠敏出品 | CSDN（ID：CSDNnew...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdnnews">来自：	<span class="blog_title"> CSDN资讯</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_61" data-pid="61"><iframe src="./使用utf-8-sig避免中文乱码_files/saved_resource(3).html" frameborder="0" width="100%" height="75px" scrolling="no"></iframe><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?d=2&amp;k=&amp;m=ncitbEpfvnHttEDDySLHncbfLQvbAEHpLXcpSHJEnSSibinpLtJpmAipfnmHQELSEWcbJJSXLXUptUbSnicSbSvAAvJbHcLQnSiQ"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/m0_37907797/article/details/102661778&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;14&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/m0_37907797/article/details/102661778" target="_blank" rel="noopener" title="程序员必须掌握的核心算法有哪些？">
+		<h4 class="text-truncate oneline">
+				程序员必须掌握的核心算法有哪些？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-26</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					21万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/m0_37907797/article/details/102661778" target="_blank" rel="noopener" title="程序员必须掌握的核心算法有哪些？">
+				<span class="desc oneline">由于我之前一直强调数据结构以及算法学习的重要性，所以就有一些读者经常问我，数据结构与算法应该要学习到哪个程度呢？，说实话，这个问题我不知道要怎么回答你，主要取决于你想学习到哪些程度，不过针对这个问题，...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37907797">来自：	<span class="blog_title"> 帅地</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_43943977/article/details/102691392&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;15&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_43943977/article/details/102691392" target="_blank" rel="noopener" title="Python——画一棵漂亮的樱花树（不同种樱花+玫瑰+圣诞树喔）">
+		<h4 class="text-truncate oneline">
+				Python——画一棵漂亮的樱花树（不同种樱花+玫瑰+圣诞树喔）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-22</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					15万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_43943977/article/details/102691392" target="_blank" rel="noopener" title="Python——画一棵漂亮的樱花树（不同种樱花+玫瑰+圣诞树喔）">
+				<span class="desc oneline">最近翻到一篇知乎，上面有不少用Python（大多是turtle库）绘制的树图，感觉很漂亮，我整理了一下，挑了一些我觉得不错的代码分享给大家（这些我都测试过，确实可以生成）one 樱花树 动态生成樱花效...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43943977">来自：	<span class="blog_title"> 碎片</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_44210563/article/details/102826406&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;16&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_44210563/article/details/102826406" target="_blank" rel="noopener" title="网页实现一个简单的音乐播放器（大佬别看。(⊙﹏⊙)）">
+		<h4 class="text-truncate oneline">
+				网页实现一个简单的音乐播放器（大佬别看。(⊙﹏⊙)）		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-30</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_44210563/article/details/102826406" target="_blank" rel="noopener" title="网页实现一个简单的音乐播放器（大佬别看。(⊙﹏⊙)）">
+				<span class="desc oneline">今天闲着无事，就想写点东西。然后听了下歌，就打算写个播放器。于是乎用h5 audio的加上js简单的播放器完工了。演示地点演示html代码如下`	music		 								这个年纪			七月的风...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44210563">来自：	<span class="blog_title"> qq_44210563的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_36903042/article/details/100798101&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;17&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_36903042/article/details/100798101" target="_blank" rel="noopener" title="别再翻了，面试二叉树看这 11 个就够了~">
+		<h4 class="text-truncate oneline">
+				别再翻了，面试二叉树看这 11 个就够了~		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-13</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					9万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_36903042/article/details/100798101" target="_blank" rel="noopener" title="别再翻了，面试二叉树看这 11 个就够了~">
+				<span class="desc oneline">写在前边数据结构与算法：不知道你有没有这种困惑，虽然刷了很多算法题，当我去面试的时候，面试官让你手写一个算法，可能你对此算法很熟悉，知道实现思路，但是总是不知道该在什么地方写，而且很多边界条件想不全面...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36903042">来自：	<span class="blog_title"> 一个不甘平凡的码农</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_44543508/article/details/102651841&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;18&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_44543508/article/details/102651841" target="_blank" rel="noopener" title="Java学习的正确打开方式">
+		<h4 class="text-truncate oneline">
+				Java学习的正确打开方式		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-08</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					12万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_44543508/article/details/102651841" target="_blank" rel="noopener" title="Java学习的正确打开方式">
+				<span class="desc oneline">在博主认为，对于入门级学习java的最佳学习方法莫过于视频+博客+书籍+总结，前三者博主将淋漓尽致地挥毫于这篇博客文章中，至于总结在于个人，实际上越到后面你会发现学习的最好方式就是阅读参考官方文档其次...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44543508">来自：	<span class="blog_title"> 程序员宜春的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_62" data-pid="62"><iframe src="./使用utf-8-sig避免中文乱码_files/saved_resource(4).html" frameborder="0" width="100%" height="75px" scrolling="no"></iframe><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?d=2&amp;k=&amp;m=cAJSnntLJQQbninHintcDityHAptpAEAJEbcnQnAmnUiHXbbbtDHiDtXcntHiLpQpWSJLSbScivLtQtDEJnLDQLADHcEAJQtpEbQ"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/Godsolve/article/details/102476732&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;19&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/Godsolve/article/details/102476732" target="_blank" rel="noopener" title="接私活必备的 10 个开源项目！">
+		<h4 class="text-truncate oneline">
+				接私活必备的 10 个开源项目！		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-10</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/Godsolve/article/details/102476732" target="_blank" rel="noopener" title="接私活必备的 10 个开源项目！">
+				<span class="desc oneline">点击蓝色“GitHubDaily”关注我加个“星标”，每天下午 18:35，带你逛 GitHub！作者 | SevDot来源 | http://1t.click/VE8Web 开发中几乎的平台都需要一...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/Godsolve">来自：	<span class="blog_title"> 南木的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/u014427391/article/details/102785219&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;20&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/u014427391/article/details/102785219" target="_blank" rel="noopener" title="linux系列之常用运维命令整理笔录">
+		<h4 class="text-truncate oneline">
+				linux系列之常用运维命令整理笔录		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-02</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					17万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/u014427391/article/details/102785219" target="_blank" rel="noopener" title="linux系列之常用运维命令整理笔录">
+				<span class="desc oneline">本博客记录工作中需要的linux运维命令，大学时候开始接触linux，会一些基本操作，可是都没有整理起来，加上是做开发，不做运维，有些命令忘记了，所以现在整理成博客，当然vi，文件操作等就不介绍了，慢...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014427391">来自：	<span class="blog_title"> Nicky's blog</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/m0_38106923/article/details/102805399&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;21&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/m0_38106923/article/details/102805399" target="_blank" rel="noopener" title="GitHub开源史上最大规模中文知识图谱">
+		<h4 class="text-truncate oneline">
+				GitHub开源史上最大规模<em>中文</em>知识图谱		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-29</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/m0_38106923/article/details/102805399" target="_blank" rel="noopener" title="GitHub开源史上最大规模中文知识图谱">
+				<span class="desc oneline">近日，一直致力于知识图谱研究的 OwnThink 平台在 Github 上开源了史上最大规模 1.4 亿中文知识图谱，其中数据是以（实体、属性、值），（实体、关系、实体）混合的形式组织，数据格式采用 ...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38106923">来自：	<span class="blog_title"> 不脱发的程序猿</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/sun_wangdong/article/details/79547225&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;22&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/sun_wangdong/article/details/79547225" target="_blank" rel="noopener" title="从pandas写入csv中文乱码问题的解决">
+		<h4 class="text-truncate oneline">
+				从<em>pandas</em>写入csv<em>中文</em><em>乱码</em><em>问题</em>的解决		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">03-13</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/sun_wangdong/article/details/79547225" target="_blank" rel="noopener" title="从pandas写入csv中文乱码问题的解决">
+				<span class="desc oneline">在使用pandas的to_csv来写入csv中，会出现中文乱码问题，可以通过在pandas中读取带有中文的csv文件时，读写中汉字为乱码，可加上encoding参数来避免，如：pd.read_csv(...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/sun_wangdong">来自：	<span class="blog_title"> 渣渣</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_43746433/article/details/94464190&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;23&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_43746433/article/details/94464190" target="_blank" rel="noopener" title="pandas库to_csv 保存数据出现中文乱码问题及解决办法">
+		<h4 class="text-truncate oneline">
+				<em>pandas</em>库<em>to_csv</em> <em>保存</em><em>数据</em><em>出现</em><em>中文</em><em>乱码</em><em>问题</em>及<em>解决办法</em>		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">07-02</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					42</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_43746433/article/details/94464190" target="_blank" rel="noopener" title="pandas库to_csv 保存数据出现中文乱码问题及解决办法">
+				<span class="desc oneline">问题1.对爬取的数据进行数据清洗后保存在csv文件中，但是用word打开csv文件打开时乱码。解决办法1.使用pandas的to_csv()方法重新保存(1)使用 data.to_csv(file_n...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43746433">来自：	<span class="blog_title"> 王大阳的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_63" data-pid="63"><script async="async" charset="utf-8" src="./使用utf-8-sig避免中文乱码_files/stream.js.download" data-id="8935aa488dd58452b9e5ee3b44f1212f" data-div-style="width:100%;" data-tit-style="margin-bottom: 6px; font-size: 18px; line-height: 24px; color: #3d3d3d;display: inline-block;font-weight:bold;" data-des-style="font-size: 13px; line-height: 22px; white-space: normal; color: #999;" data-img-style="float:left;margin-right:15px;width:90px;height:60px;" data-is-handling="1">
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=63&amp;a=809&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=01f293d8b418410a913a24e9e1104081"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/loongggdroid/article/details/102829823&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;24&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/loongggdroid/article/details/102829823" target="_blank" rel="noopener" title="微信支付崩溃了，但是更让马化腾和张小龙崩溃的竟然是……">
+		<h4 class="text-truncate oneline">
+				微信支付崩溃了，但是更让马化腾和张小龙崩溃的竟然是……		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-30</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/loongggdroid/article/details/102829823" target="_blank" rel="noopener" title="微信支付崩溃了，但是更让马化腾和张小龙崩溃的竟然是……">
+				<span class="desc oneline">loonggg读完需要3分钟速读仅需1分钟事件还得还原到昨天晚上，10月29日晚上20:09-21:14之间，微信支付发生故障，全国微信支付交易无法正常进行。然......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/loongggdroid">来自：	<span class="blog_title"> 非著名程序员</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_45081575/article/details/102886718&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;25&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_45081575/article/details/102886718" target="_blank" rel="noopener" title="《奇巧淫技》系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱">
+		<h4 class="text-truncate oneline">
+				《奇巧淫技》系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-19</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_45081575/article/details/102886718" target="_blank" rel="noopener" title="《奇巧淫技》系列-python！！每天早上八点自动发送天气预报邮件到QQ邮箱">
+				<span class="desc oneline">将代码部署服务器，每日早上定时获取到天气数据，并发送到邮箱。也可以说是一个小型人工智障。知识可以运用在不同地方，不一定非是天气预报。...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45081575">来自：	<span class="blog_title"> SunriseCai的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/googdev/article/details/100040432&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;26&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/googdev/article/details/100040432" target="_blank" rel="noopener" title="60 个让程序员崩溃的瞬间，哈哈哈哈哈哈哈哈哈">
+		<h4 class="text-truncate oneline">
+				60 个让程序员崩溃的瞬间，哈哈哈哈哈哈哈哈哈		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">12-18</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					10万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/googdev/article/details/100040432" target="_blank" rel="noopener" title="60 个让程序员崩溃的瞬间，哈哈哈哈哈哈哈哈哈">
+				<span class="desc oneline">阅读本文大概需要 2.3333 分钟。前方高能，每一个程序员看完，你不笑死个人，你来找我，我自己看了好几遍，反正笑的停不下来，太特么有才了。1. 公司实习生找 Bug2.......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/googdev">来自：	<span class="blog_title"> stormzhang的专栏</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/kexuanxiu1163/article/details/100840644&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;27&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/kexuanxiu1163/article/details/100840644" target="_blank" rel="noopener" title="五分钟小知识：为什么说 ++i 的效率比 i++ 高？">
+		<h4 class="text-truncate oneline">
+				五分钟小知识：为什么说 ++i 的效率比 i++ 高？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-14</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/kexuanxiu1163/article/details/100840644" target="_blank" rel="noopener" title="五分钟小知识：为什么说 ++i 的效率比 i++ 高？">
+				<span class="desc oneline">点击蓝色“五分钟学算法”关注我哟加个“星标”，天天中午 12:15，一起学算法作者 | 守望先生来源 | 编程珠玑前言不知道你是否听说过 ++i 比 i++ 快的说法，真......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/kexuanxiu1163">来自：	<span class="blog_title"> 程序员吴师兄的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/robertsong2004/article/details/39059563&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;28&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/robertsong2004/article/details/39059563" target="_blank" rel="noopener" title="14位享誉全球的程序员">
+		<h4 class="text-truncate oneline">
+				14位享誉全球的程序员		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/robertsong2004/article/details/39059563" target="_blank" rel="noopener" title="14位享誉全球的程序员">
+				<span class="desc oneline">本文转载至：http://www.cricode.com/2922.html</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/robertsong2004">来自：	<span class="blog_title"> 闲云孤鹤</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_64" data-pid="64"><script async="async" charset="utf-8" src="./使用utf-8-sig避免中文乱码_files/stream.js.download" data-id="8935aa488dd58452b9e5ee3b44f1212f" data-div-style="width:100%;" data-tit-style="margin-bottom: 6px; font-size: 18px; line-height: 24px; color: #3d3d3d;display: inline-block;font-weight:bold;" data-des-style="font-size: 13px; line-height: 22px; white-space: normal; color: #999;" data-img-style="float:left;margin-right:15px;width:90px;height:60px;" data-is-handling="1">
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=64&amp;a=809&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=8765942a67a6442d94ee021fa7287a70"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/heihaozi/article/details/102882698&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;29&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/heihaozi/article/details/102882698" target="_blank" rel="noopener" title="通俗易懂地给女朋友讲：线程池的内部原理">
+		<h4 class="text-truncate oneline">
+				通俗易懂地给女朋友讲：线程池的内部原理		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-04</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					8万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/heihaozi/article/details/102882698" target="_blank" rel="noopener" title="通俗易懂地给女朋友讲：线程池的内部原理">
+				<span class="desc oneline">餐盘在灯光的照耀下格外晶莹洁白，女朋友拿起红酒杯轻轻地抿了一小口，对我说：“经常听你说线程池，到底线程池到底是个什么原理？”...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/heihaozi">来自：	<span class="blog_title"> 万猫学社</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/loongggdroid/article/details/102656177&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;30&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/loongggdroid/article/details/102656177" target="_blank" rel="noopener" title="五款高效率黑科技神器工具，炸裂好用，省时间">
+		<h4 class="text-truncate oneline">
+				五款高效率黑科技神器工具，炸裂好用，省时间		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-20</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					3万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/loongggdroid/article/details/102656177" target="_blank" rel="noopener" title="五款高效率黑科技神器工具，炸裂好用，省时间">
+				<span class="desc oneline">loonggg读完需要4分钟速读仅需2分钟感觉我好久好久没有给大家分享高质量的软件和插件了。今天周末，难得在家休息一下，痛下决心，分享一些我认为的高效率工具软件给大家。废......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/loongggdroid">来自：	<span class="blog_title"> 非著名程序员</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/zcg_741454897/article/details/102796022&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;31&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/zcg_741454897/article/details/102796022" target="_blank" rel="noopener" title="比特币原理详解">
+		<h4 class="text-truncate oneline">
+				比特币原理详解		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-29</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					14万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/zcg_741454897/article/details/102796022" target="_blank" rel="noopener" title="比特币原理详解">
+				<span class="desc oneline">一、什么是比特币比特币是一种电子货币，是一种基于密码学的货币，在2008年11月1日由中本聪发表比特币白皮书，文中提出了一种去中心化的电子记账系统，我们平时的电子现金是银行来记账，因为银行的背后是国家...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/zcg_741454897">来自：	<span class="blog_title"> zcg_741454897的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/m0_37907797/article/details/102781027&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;32&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank" rel="noopener" title="大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了">
+		<h4 class="text-truncate oneline">
+				大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-12</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					26万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/m0_37907797/article/details/102781027" target="_blank" rel="noopener" title="大学四年自学走来，这些私藏的实用工具/学习网站我贡献出来了">
+				<span class="desc oneline">大学四年，看课本是不可能一直看课本的了，对于学习，特别是自学，善于搜索网上的一些资源来辅助，还是非常有必要的，下面我就把这几年私藏的各种资源，网站贡献出来给你们。主要有：电子书搜索、实用工具、在线视频...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37907797">来自：	<span class="blog_title"> 帅地</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/caoz/article/details/100681599&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;33&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/caoz/article/details/100681599" target="_blank" rel="noopener" title="二十出头，老气横秋">
+		<h4 class="text-truncate oneline">
+				二十出头，老气横秋		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-09</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					1万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/caoz/article/details/100681599" target="_blank" rel="noopener" title="二十出头，老气横秋">
+				<span class="desc oneline">有的时候，我们希望年轻人成熟一点，不要巨婴，不要总是等着别人来解救，要自立，要有担当。但有时候吧，发现有些年轻人，似乎过于成熟了，二十来岁的人，感觉怎么就老气横秋的。1、......</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/caoz">来自：	<span class="blog_title"> caoz的梦呓</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_65" data-pid="65"><script async="async" charset="utf-8" src="./使用utf-8-sig避免中文乱码_files/stream.js.download" data-id="8935aa488dd58452b9e5ee3b44f1212f" data-div-style="width:100%;" data-tit-style="margin-bottom: 6px; font-size: 18px; line-height: 24px; color: #3d3d3d;display: inline-block;font-weight:bold;" data-des-style="font-size: 13px; line-height: 22px; white-space: normal; color: #999;" data-img-style="float:left;margin-right:15px;width:90px;height:60px;" data-is-handling="1">
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=65&amp;a=809&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=006e256e1b9041748d7de8ae2ee258f7"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/weixin_37615279/article/details/100516311&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;34&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/weixin_37615279/article/details/100516311" target="_blank" rel="noopener" title="我的 Input框 不可能这么可爱">
+		<h4 class="text-truncate oneline">
+				我的 Input框 不可能这么可爱		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">09-03</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					9万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/weixin_37615279/article/details/100516311" target="_blank" rel="noopener" title="我的 Input框 不可能这么可爱">
+				<span class="desc oneline">作者：陈大鱼头github： KRISACHAN&lt;input /&gt; 标签是我们日常开发中非常常见的替换元素了，但是最近在刷 whattwg 跟 MDN 的时候发现 跟 &lt;input ...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37615279">来自：	<span class="blog_title"> 鱼头的Web海洋</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/jianzhang11/article/details/102867120&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;35&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/jianzhang11/article/details/102867120" target="_blank" rel="noopener" title="数据库优化 - SQL优化">
+		<h4 class="text-truncate oneline">
+				<em>数据</em>库优化 - SQL优化		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-01</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					14万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/jianzhang11/article/details/102867120" target="_blank" rel="noopener" title="数据库优化 - SQL优化">
+				<span class="desc oneline">以实际SQL入手，带你一步一步走上SQL优化之路！</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/jianzhang11">来自：	<span class="blog_title"> 飘渺Jam的博客</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/LaoChengZier/article/details/83117064&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;36&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/LaoChengZier/article/details/83117064" target="_blank" rel="noopener" title="pandas保存csv乱码问题解决方案">
+		<h4 class="text-truncate oneline">
+				<em>pandas</em><em>保存</em>csv<em>乱码</em><em>问题</em>解决方案		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-17</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					755</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/LaoChengZier/article/details/83117064" target="_blank" rel="noopener" title="pandas保存csv乱码问题解决方案">
+				<span class="desc oneline">&nbsp; &nbsp; 老鼠屎使用pandas处理数据时，在to_csv时出现了小插曲。老鼠屎的数据格式如下：&nbsp; &nbsp; 然而保存至csv后出现严重乱码&nbsp; &nbsp; 这里，老鼠屎提供一下解决方案，在to_csv时，我们加上en...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/LaoChengZier">来自：	<span class="blog_title"> 翻滚的老鼠屎</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_36903042/article/details/102792114&quot;,&quot;strategy&quot;:&quot;BlogCommendFromMachineLearnPai2&quot;,&quot;index&quot;:&quot;37&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_36903042/article/details/102792114" target="_blank" rel="noopener" title="大学四年，我把私藏的自学「学习网站/实用工具」都贡献出来了">
+		<h4 class="text-truncate oneline">
+				大学四年，我把私藏的自学「学习网站/实用工具」都贡献出来了		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-29</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					14万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_36903042/article/details/102792114" target="_blank" rel="noopener" title="大学四年，我把私藏的自学「学习网站/实用工具」都贡献出来了">
+				<span class="desc oneline">在分享之前，先说说初学者如何学习编程，这个话题想必非常的重要，要学好编程，给你一些学习网站也好、实用工具也好，但前提是你知道如何去学习它。见过很多初学者，以及小鹿我刚开始学习的时候，也是自己瞎摸索，找...</span>
+			</a>
+			<span class="blog_title_box oneline ">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+											<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36903042">来自：	<span class="blog_title"> 一个不甘平凡的码农</span></a>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_43901693/article/details/100606828&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;0&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank" rel="noopener" title="相见恨晚的超实用网站">
+		<h4 class="text-truncate oneline">
+				相见恨晚的超实用网站		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">01-06</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					7万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_43901693/article/details/100606828" target="_blank" rel="noopener" title="相见恨晚的超实用网站">
+				<span class="desc oneline">相见恨晚的超实用网站
+持续更新中。。。</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><div id="kp_box_66" data-pid="66"><script type="text/javascript">
+        (function() {
+            var s = "_" + Math.random().toString(36).slice(2);
+            document.write('<div style="" id="' + s + '"></div>');
+            (window.slotbydup = window.slotbydup || []).push({
+                id: "u4623747",
+                container: s
+            });
+        })();
+</script><div style="" id="_0k8575z500c"><iframe id="iframeu4623747_0" name="iframeu4623747_0" src="./使用utf-8-sig避免中文乱码_files/ecwm(2).html" width="962" height="52" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:962px;height:52px" allowtransparency="true"></iframe></div>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="./使用utf-8-sig避免中文乱码_files/c.js.download" async="async" defer="defer">
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=66&amp;a=1755&amp;c=0&amp;k=&amp;d=1&amp;t=3&amp;u=b8470ee32c3d4b15a319871a19856b98"></div></div>
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_44543508/article/details/102691425&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;3&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_44543508/article/details/102691425" target="_blank" rel="noopener" title="java中的Static、final、Static final各种用法">
+		<h4 class="text-truncate oneline">
+				java中的Static、final、Static final各种用法		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-30</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					5767</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_44543508/article/details/102691425" target="_blank" rel="noopener" title="java中的Static、final、Static final各种用法">
+				<span class="desc oneline">前言
+对Static、final、Static final这几个关键词熟悉又陌生？想说却又不知怎么准确说出口？好的，本篇博客文章将简短概要出他们之间的各自的使用，希望各位要是被你的面试官问到了，也能...</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/javajiawei/article/details/102780241&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;4&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/javajiawei/article/details/102780241" target="_blank" rel="noopener" title="各大公司在GitHub上开源投入排名分析">
+		<h4 class="text-truncate oneline">
+				各大公司在GitHub上开源投入排名分析		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-05</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					4225</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/javajiawei/article/details/102780241" target="_blank" rel="noopener" title="各大公司在GitHub上开源投入排名分析">
+				<span class="desc oneline">基于GitHub的数据进行分析各个公司在开源上的投入排名</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/qq_42554007/article/details/102802719&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;7&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/qq_42554007/article/details/102802719" target="_blank" rel="noopener" title="python学习方法总结(内附python全套学习资料)">
+		<h4 class="text-truncate oneline">
+				python学习方法总结(内附python全套学习资料)		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">11-03</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/qq_42554007/article/details/102802719" target="_blank" rel="noopener" title="python学习方法总结(内附python全套学习资料)">
+				<span class="desc oneline">不要再问我python好不好学了
+我之前做过半年少儿编程老师，一个小学四年级的小孩子都能在我的教学下独立完成python游戏，植物大战僵尸简单版，如果要肯花时间，接下来的网络开发也不是问题，人工智能也...</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/u012702547/article/details/102813905&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;8&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/u012702547/article/details/102813905" target="_blank" rel="noopener" title="Spring Boot 开发微信公众号后台">
+		<h4 class="text-truncate oneline">
+				Spring Boot 开发微信公众号后台		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-30</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					2607</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/u012702547/article/details/102813905" target="_blank" rel="noopener" title="Spring Boot 开发微信公众号后台">
+				<span class="desc oneline">Hello 各位小伙伴，松哥今天要和大家聊一个有意思的话题，就是使用 Spring Boot 开发微信公众号后台。
+很多小伙伴可能注意到松哥的个人网站（http://www.javaboy.org）前...</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	
+	
+<div class="recommend-item-box type_blog clearfix" data-report-click="{&quot;mod&quot;:&quot;popu_614&quot;,&quot;dest&quot;:&quot;https://blog.csdn.net/xiyue001/article/details/102816596&quot;,&quot;strategy&quot;:&quot;BlogCommendHotData&quot;,&quot;index&quot;:&quot;9&quot;}">
+	<div class="content">
+		<a href="https://blog.csdn.net/xiyue001/article/details/102816596" target="_blank" rel="noopener" title="兼职程序员一般可以从什么平台接私活？">
+		<h4 class="text-truncate oneline">
+				兼职程序员一般可以从什么平台接私活？		</h4>
+		<div class="info-box d-flex align-content-center">
+			<p class="date-and-readNum oneline">
+				<span class="date hover-show">10-31</span>
+				<span class="read-num hover-hide">
+					阅读数 
+					15万+</span>
+				</p>
+			</div>
+		</a>
+		<p class="content">
+			<a href="https://blog.csdn.net/xiyue001/article/details/102816596" target="_blank" rel="noopener" title="兼职程序员一般可以从什么平台接私活？">
+				<span class="desc oneline">这个问题我进行了系统性的总结，以下将进行言简意赅的说明和渠道提供，希望对各位小猿/小媛们有帮助~
+
+根据我们的经验，程序员兼职主要分为三种：兼职职位众包、项目整包和自由职业者驻场。
+
+所谓的兼职职位众...</span>
+			</a>
+			<span class="blog_title_box oneline no-title">
+									<span class="type-show type-show-blog type-show-after">博文</span>
+												</span>
+		</p>
+	</div>
+	</div>
+
+	<div class="recommend-item-box recommend-recommend-box"><script type="text/javascript" src="./使用utf-8-sig避免中文乱码_files/rxjg.js.download"></script></div></div></main></div></div></body></html>

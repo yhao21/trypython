@@ -1,0 +1,65 @@
+var banner = document.getElementById('banner');
+var legal = document.getElementById('roll-cta');
+
+
+var tl = new TimelineMax({repeat:0, repeatDelay:2.5});
+
+
+window.onload = function() {   
+    
+    tl.set(banner, {visibility: "visible"})
+
+    /*frame one*/	
+    .add("frame1")
+    .from(".title1-1, .title1-2", .4, {alpha:0,  ease:Linear.easeIn}, "frame1")
+    .from(".dell-logo_w, vendor-logo, .cta, .first-bg", .4, {alpha:0,  ease:Linear.easeIn}, "frame1")
+    .to(".title1-1,.title1-2, .dell-logo_w, .white-bg", .3, {alpha:0,  ease:Power4.easeOut}, "frame1+=2.6")
+    .to(".first-bg, .cta",.3, {scale: 0.2,x:0, alpha:0, ease:Power4.easeout}, "frame1+=2.5" )
+    .from(".bg, .product1, .dell-logo", .5, {alpha:0, ease:Linear.easeIn}, "frame1+=2.5")
+   
+
+    /*frame two*/
+    .add("frame2= frame1+=2.6")
+    .from(".title2-1, .cta2,.product-name, .monitor", .5, {alpha:0,  ease:Linear.easeIn}, "frame2")
+    .to(".title2-1, .product1,.product-name", .4, {alpha:0, ease:Power4.easeout}, "frame2+=2.6")
+
+
+    /*frame three*/
+    .add("frame3= frame2+=2.6")
+     .from(".title3-1, .product-name1,  .product2", .4, {alpha:0,  ease:Linear.easeIn}, "frame3")
+     .to(".title3-1, .product2, .product-name1", .4, {alpha:0, ease:Power4.easeout}, "frame3+=2.6")
+    
+      /*frame four*/
+     .add("frame4= frame3+=2.6")
+     .from(".title4-1, .title4-2,  .product3", .4, {alpha:0,  ease:Linear.easeIn}, "frame4")
+     .to(" .dell-logo, .vendor-logo", .4, {alpha:1,  ease:Linear.easeIn}, "frame4")
+     .to(".title4-1,.title4-2, .product3, .monitor", .4, {alpha:0, ease:Power4.easeout}, "frame4+=2.6")
+
+   /*frame five*/
+     .add("frame5= frame4+=2.8")
+     .from(".title5, .product4, .vio, .intel-copy", .5, {alpha:0, ease:Power4.easein}, "frame5")
+     .from(".frame-5-text_box ", .5, {alpha:0, x:100, ease:Power4.easein}, "frame5")
+
+  	  /*roll over
+	  .from("#roll-cta", .5, {alpha:0, x:-300, ease:Power4.easeout}, "frame5")
+	  .from("#rolltext, #legal-text", .5, {alpha:0, ease:Power4.easeout}, "frame5")
+	  
+  	  legal.addEventListener("mouseover",legalHover);
+		  function legalHover(){
+		  tl.pause();
+		  TweenMax.to("#legal", .5, {top:0, ease:Power1.easeOut})  
+	  }
+	  
+	  legal.addEventListener("mouseout",legalOut);
+		  function legalOut(){
+		  tl.play();
+		  TweenMax.to("#legal", .5, {top:-1000, ease:Power1.easeIn})
+	  }
+
+	  ;*/
+	  
+    // tl.seek("loop")
+
+    var currentDuration = tl.duration();
+    console.log(currentDuration);   
+};

@@ -1,0 +1,7 @@
+1.使用pandas导入csv文件：
+	import pandas as pd
+
+	file = pandas.read_csv('domains.csv',names = ['url'])
+
+	这里通过names添加每一列的类名。
+	这个操作专门针对那些没有列名的csv文件。以避免pandas把第一行的值当做列名

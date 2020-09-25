@@ -1,0 +1,19 @@
+函数调用类
+
+	1.	想将一个函数A作为参数传给函数B的方法：
+			第一步：先将函数A的名字赋值给一个变量x。注意这里是函数的名字，而不是函数名+()，若使用函数名+()这表示调用函数。只使用函数名表示索引
+			第二部：将变量x传入目标函数B
+			第三部：在函数B中通过变量x调用函数A。方法如下：
+			        x(args)通过加括号的方式调用函数A，括号内添加的就是函数A所需要的参数
+			实例：
+			    def requests_way(url):
+                    headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"}
+                    r = requests.get(url,headers = headers)
+                    html = r.text
+                    return html
+
+                def page_download(ways)
+                    url = 'http://www.baidu.com/'
+                    web_con = ways(url)
+
+                ways = requests_way
