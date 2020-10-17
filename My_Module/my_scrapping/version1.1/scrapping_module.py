@@ -86,18 +86,18 @@ class Scrapping():
                 '...'*13 + '(%d/%d)' % (self.work_count, self.total_workload))
 
 
-        if self.method == 'requests':
-            r = requests.get(self.url, headers = self.headers)
-            html = r.text
+        #if self.method == 'requests':
+        #    r = requests.get(self.url, headers = self.headers)
+        #    html = r.text
 
-        elif self.method == 'selenium':
-            driver = webdriver.Chrome()
-            driver.get(self.url)
-            html = driver.page_source
-            driver.close()
+        #elif self.method == 'selenium':
+        #    driver = webdriver.Chrome()
+        #    driver.get(self.url)
+        #    html = driver.page_source
+        #    driver.close()
 
 
-        self.file_setup(html)
+        #self.file_setup(html)
         self.workload -= 1
         print('Finish downloading [ %s ]...' % self.file_name)
 
@@ -145,10 +145,10 @@ class Scrapping():
 
 if __name__ == '__main__':
     url_base = 'https://coinmarketcap.com/'
-    url = [url_base + str(i - 1) + '/' for i in range(1,6)]
+    url = [url_base + str(i) + '/' for i in range(5)]
     folder_name = 'html_file'
     file_names = ['Page' + str(i) for i in range(len(url))]
-    Scrapping(url, folder_name, file_names).folder_setup()
+    Scrapping(url, folder_name, file_names, sleep_mode = 5).folder_setup()
 
 
 

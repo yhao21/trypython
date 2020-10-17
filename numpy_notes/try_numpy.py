@@ -1001,6 +1001,21 @@ a是2*2的矩阵，现在有一个1*2的向量v，按照数学规则，a*v是无
 print(a*b)
     [[ 0 10]
      [20 30]]
+
+or you can use this function to execute matrix multiplication
+np.matmul(matrix_a, matrix_b)
+
+
+    def random_matrix(m,n):
+         out = [[random.random() for col in range(n)] for row in range(m)]
+    
+         return out
+    
+    rand_a = random_matrix(400,300)
+    rand_b = random_matrix(300,400)
+    x2 = np.matmul(rand_a, rand_b)
+
+
      
 矩阵的转置 matrix transpose
 
