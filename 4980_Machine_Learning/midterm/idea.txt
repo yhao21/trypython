@@ -1,0 +1,67 @@
+===============
+program logic
+===============
+1. Download process
+
+Download pages with same order from both website at same time, i.e.,
+                               Coinmktcap                                         Gecko
+
+first 15 mins   round1           page1                    +                       page1
+                round2           page2                    +                       page2
+                round3           page3                    +                       page3
+                round4           page4                    +                       page4
+                round5           page5                    +                       page5
+
+
+second 15 mins  round1           page1                    +                       page1
+                round2           page2                    +                       page2
+                round3           page3                    +                       page3
+                round4           page4                    +                       page4
+                round5           page5                    +                       page5
+...
+
+
+URL format:
+
+coinmktcap:
+    coinmktcap.com/2 ---------> coinmktcap.com/  +  <page#>
+
+gecko:
+    coingecko.com/en?page=2 ---> coingecko.com/en?page=   + <page#>
+
+
+----------------------------------------------------------------------------------------------
+
+2. format url list:
+url_list = [(mkt_page1, gecko_page1), (mkt_page2, gecko_page2),...,(mkt_page5, gecko_page5)]
+
+----------------------------------------------------------------------------------------------
+
+3. folder name
+				coinmktcap_html_file                   gecko_html_file
+
+----------------------------------------------------------------------------------------------
+
+4. file name format
+				<order>_<15mins>_<page number>_<Month>_<Day>_<Hour>_<Min>_<Second>.html
+
+				Example:
+
+				1_15_page1_10_19_20_30_25.html
+
+				First(1) 15mins(15) page1 Oct(10) 19th(19) 8:30:25pm(20_30_25)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

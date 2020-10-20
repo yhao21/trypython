@@ -1,0 +1,6 @@
+
+===============
+Questions
+===============
+1. What kind of difference to compare?
+				diff for each coin between two website?
