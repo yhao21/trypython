@@ -2,6 +2,8 @@ import numpy as np
 import os, requests, time, glob, re, datetime
 from time_countdown import workload_time_left as lte
 
+
+
 class Scrapping():
 
     def __init__(self, url_list, folder_name, hours):
@@ -21,7 +23,6 @@ class Scrapping():
         self.work_leftover = None
         self.finish_file = []
         
-
 
 
     def folder_setup(self):
@@ -56,9 +57,8 @@ class Scrapping():
                 name_for_check = re.compile(r'.*\d*_15.*page\d*').findall(geckofile)[0]
                 self.finish_file.append(name_for_check)
 
-
-
         self.check_file_existence()
+    
     
 
     def check_file_existence(self):
@@ -79,15 +79,18 @@ class Scrapping():
             # a pair of url for the nth page
             # url_order = (coin_url, gecko_url)
             for url_order in self.url_list:
+    
                 # web_url is a url for either coin or gecko
                 # web_url = coin_url, web_url = gecko_url
                 # the for loop below do the preparation of a particular page
                 # from both coinmkt and gecko.
                 for web_url in url_order:
+    
                     # get page number
                     order = re.compile('(\d)').findall(web_url)[0]
                     self.file_name_base = 'page' + str(order)
                     t_stamp = datetime.datetime.fromtimestamp(time.time()).strftime('%m-%d-%H-%M-%S')
+    
                     # file name:
                     # 4_15_page5_10-19-21-33-29
                     self.file_name = str(self.count) + '_15_' + self.file_name_base + '_' + t_stamp
@@ -122,8 +125,6 @@ class Scrapping():
                     print('\nProgram sleeps for' + self.output_format(sleep_time) + 'seconds...')
                     print('-' * 100 + '\n\n')
                     time.sleep(sleep_time)
-
-
         
             
             print(self.finish_repeats() + '\n    ----> Sleep for 15 mins...')
@@ -135,6 +136,7 @@ class Scrapping():
 
         print('\nDone! You have downloaded %s hour(s) data!' % self.output_format(self.total_hours))
     
+
 
     def start_scrapping(self):
         '''
@@ -154,11 +156,13 @@ class Scrapping():
 
 
     def save_html_file(self, content):
+        '''
+        save source code to a html file
+        '''
+
         with open(self.file_path + '.temp', 'w', encoding = 'utf-8') as f:
             f.write(content)
         os.rename(self.file_path + '.temp', self.file_path)
-
-
 
 
 
@@ -170,11 +174,13 @@ class Scrapping():
         return np.random.randint(5,10) + np.random.normal(8,3)
 
 
+
     def output_format(self, item):
         '''
         format output need to print
         '''
         return ' [ ' + str(item) + ' ] '
+
 
 
     def repeats(self):
@@ -185,7 +191,12 @@ class Scrapping():
         return self.total_hours*4
 
 
+
     def finish_repeats(self):
+        '''
+        Feedback after each 15-mins round
+        '''
+
         if self.count == 1:
             order = 'st'
         elif self.count == 2:
@@ -201,7 +212,6 @@ class Scrapping():
 
 
 if __name__ == '__main__':
-
 
     url_coin_base = 'https://coinmarketcap.com/' 
     url_gecko_base = 'https://www.coingecko.com/en?page=' 
