@@ -1,0 +1,54 @@
+from scrapping_module import Scrapping
+from parsing_module import Parsing
+
+
+
+#==============================================================================
+# Step 1. Download 48hr data
+#==============================================================================
+
+url_coin_base = 'https://coinmarketcap.com/' 
+url_gecko_base = 'https://www.coingecko.com/en?page=' 
+url_list = [(url_coin_base + str(i), url_gecko_base + str(i)) for i in range(1,6)]
+folder_name = ['coinmktcap_html_file', 'gecko_html_file']
+Scrapping(url_list, folder_name, 1).folder_setup()
+
+
+#==============================================================================
+# Step 2. Parsing data and deeplink
+#==============================================================================
+
+folder = 'coinmktcap_html_file'
+coinmkt_parse_and_deeplink = Parsing(folder).parsing_coin_html()
+folder = 'gecko_html_file'
+gecko_parse_and_deeplink = Parsing(folder).parsing_gecko_html()
+# pairing urls for last step scrapping
+deeplink_list = [(coin, gecko) for coin, gecko in zip(coinmkt_parse_and_deeplink, gecko_parse_and_deeplink)]
+
+print('=' * 100 + 'Finish pairing' + ' [ ' + len(deeplink_list) + ' ] ' + 'URLs...')
+
+
+#==============================================================================
+# Step 3. Scrapping 500 coins deeplink info
+#==============================================================================
+
+deeplink_folder = ['coin_500deeplink', 'gecko_500deeplink']
+## Then you can call scrapping module
+## 0.25 for 15 mins. Recall, for loop repeat every 15 mins, and unit of 0.25 is hour. repetition = 0.25*4 = 1 round
+## hence, we only need to download these deeplink for once, we need 0.25*4 = 1
+Scrapping(deeplink_list, deeplink_folder, 0.25).folder_setup()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

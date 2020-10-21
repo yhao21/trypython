@@ -22,6 +22,8 @@ class Scrapping():
         self.headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'}
         self.work_leftover = None
         self.finish_file = []
+        self.no_page_sleep = False
+        self.no_repetition_sleep = False
         
 
 
@@ -58,6 +60,17 @@ class Scrapping():
                 self.finish_file.append(name_for_check)
 
         self.check_file_existence()
+
+
+    def remove_tempfile(self):
+        '''
+        Remove all temp files when you restart the program
+        '''
+        
+        for folder in self.folder_path:
+            for rmfile in glob.glob(folder + '/*.temp'):
+                os.remove(rmfile)
+
     
     
 
@@ -67,6 +80,8 @@ class Scrapping():
         If not, start scrapping process.
         Otherwise, print feedback, process to next url
         '''
+
+        self.remove_tempfile()
 
         self.repeat_times = self.repeats()
         website = ['coinmkt', 'gecko']
@@ -113,6 +128,8 @@ class Scrapping():
                         self.start_scrapping()
                     else:
                         print('\nFile' + self.output_format(website[which_web] + ': ' + check_file_name) + 'already exists!')
+                        self.no_page_sleep = True
+                        self.no_repetition_sleep = True
 
                 # how many pages need to download. page range is in [1,5]
                 # after download each page, workload - 1, i.e., 4,3,2,1,0
@@ -121,17 +138,22 @@ class Scrapping():
                 if not self.work_leftover == 0:
                     # test
                     #sleep_time = 1
-                    sleep_time = self.sleep_time()
-                    print('\nProgram sleeps for' + self.output_format(sleep_time) + 'seconds...')
-                    print('-' * 100 + '\n\n')
-                    time.sleep(sleep_time)
+                    # if file exists you don't want to sleep
+                    if not self.no_page_sleep:
+                        sleep_time = self.sleep_time()
+                        print('\nProgram sleeps for' + self.output_format(sleep_time) + 'seconds...')
+                        print('-' * 100 + '\n\n')
+                        time.sleep(sleep_time)
+                    self.no_page_sleep = False
         
             
             print(self.finish_repeats() + '\n    ----> Sleep for 15 mins...')
             print('-' * 100 + '\n\n')
             self.count += 1
             # test
-            time.sleep(15 * 60)
+            if not self.no_repetition_sleep:
+                time.sleep(15 * 60)
+            self.no_repetition_sleep = False
 
 
         print('\nDone! You have downloaded %s hour(s) data!' % self.output_format(self.total_hours))
@@ -149,9 +171,9 @@ class Scrapping():
                 + '...' * 20 + '(%d/%d)' % (self.count, self.repeat_times))
 
         # test
-        r = requests.get(self.url, headers = self.headers)
-        html = r.text
-        self.save_html_file(html)
+        #r = requests.get(self.url, headers = self.headers)
+        #html = r.text
+        #self.save_html_file(html)
         print(' ' * 4 + '----> Finish...')
 
 
