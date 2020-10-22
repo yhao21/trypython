@@ -4,3 +4,15 @@ Questions
 ===============
 1. What kind of difference to compare?
 				diff for each coin between two website?
+
+
+
+
+
+
+
+where do they get the data? from the same source? same exchange platform?
+				info from third party. No guarantee for the accuracy
+
+data are different even if I refresh at the same time.
+

@@ -1,0 +1,101 @@
+
+===============
+anaysis idea
+===============
+
+
+===============
+Questions
+===============
+
+1. How attributes affects change of SIMETRI score?
+
+
+2. Different among two website
+				which web's data are more flucuated?
+
+
+
+===============
+Big idea for question 1
+===============
+1. Get the deeplink of each coin and parse SIMETRI score
+
+
+2. Data Summary
+				variables:
+								price
+								24h Volume
+								mktcap
+
+				attributes of variables:
+								max
+								min
+								quantile
+								mean
+								std deviation
+
+
+
+3. Regression 							---->  Use logistic machine
+				Y = SIMETRI score				    ----> trans A, B, C to 1, 2, 3 for analysis convenience. 
+				X1 = price std deviation
+				X2 = 24h Vol std deviation
+				X3 = MKTcap std deviation				----> how mktcap fluctuation affect score
+				X4 = price mean							----> does higher price leads to higher score
+				X5 = 24h Vol mean
+				X6 = MKTcap mean
+
+				Consider std deviation as the fluctuation
+				If change aggressive, VAR big
+
+
+
+===============
+Question 2
+===============
+1. have all coin's 48 hrs data
+
+2. compute std deviation for each variable, i.e., price, volume, mktcap
+				Then you will have data like this:
+
+				coin			coinmktcap std				gecko std
+				bitcon			3.23								3.12
+				ETH					2.32								5.233
+
+3. compare which have more std. Note, have to set a criterion, how much different should be defined as different std deviation.
+				i.e., if 3.23 vs 3.233, we say they are same
+				      if 3.23 vs 5.23,  we say one is more fluctuated than the other.
+
+
+
+
+===============
+Method
+===============
+
+1. download top 500 cryptocoin from homepage
+
+2. at last, get deeplink of each coin.
+
+
+Notice, for those at margin, you should be really carefull. they may not in the data all the time, i.e., BTC is rank 500 today,
+but rank 510 tomorrow. Then, it will not have a 48 hrs data.
+
+				To avoid, use coin only iff they have 192 repetition (48hrs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

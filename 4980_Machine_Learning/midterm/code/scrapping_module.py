@@ -129,7 +129,10 @@ class Scrapping():
                     else:
                         print('\nFile' + self.output_format(website[which_web] + ': ' + check_file_name) + 'already exists!')
                         self.no_page_sleep = True
-                        self.no_repetition_sleep = True
+                        # You don't want to skip sleep time after restart program with some file existence.
+                        # Without this condition, program will skip the first 15mins break.
+                        if self.work_leftover - 1 == 0:
+                            self.no_repetition_sleep = True
 
                 # how many pages need to download. page range is in [1,5]
                 # after download each page, workload - 1, i.e., 4,3,2,1,0
@@ -232,14 +235,197 @@ class Scrapping():
 
 
 
+def name_extraction(url_list):
+    '''
+    Extract currency name from url
+    '''
+
+    coin_file_name = []
+    gecko_file_name = []
+
+    # (coin_url, gecko_url)
+    for url_order in url_list:
+        # single url, i.e., coin_url
+        for web_url in url_order:
+            # 0 or 1, 0 for coin_url, 1 for gecko_url
+            url_index = url_order.index(web_url)
+            
+            if url_index == 0:
+                coin_name = re.compile(r'/currencies/(.*)').findall(web_url)[0]
+                coin_file_name.append(coin_name)
+
+            elif url_index == 1:
+                gecko_name = re.compile(r'/en/coins/(.*)').findall(web_url)[0]
+                gecko_file_name.append(gecko_name)
+    
+    return [(coin, gecko) for coin, gecko in zip(coin_file_name, gecko_file_name)]
+
+
+class DeepLink():
+    def __init__(self, url_list, folder_names, file_name):
+        self.path = os.getcwd()
+        self.url_list = url_list
+        self.folder_list = folder_names
+        # file name list
+        self.fname_list = file_name
+        self.folder_path = []
+        self.count = 1
+        self.no_page_sleep = False
+        self.headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'}
+
+
+
+    def folder_setup(self):
+        '''
+        Check existence of folders
+        '''
+
+        for name in self.folder_list:
+            # /home/synferlo/git/trypython/4980_Machine_Learning/midterm/code/gecko_500deeplink
+            folder_path = os.path.join(self.path, name)
+            
+            if not os.path.exists(folder_path):
+                os.mkdir(folder_path)
+            else:
+                print('\nDirectory' + self.output_format(name) + \
+                        'already exists! \n')
+
+            self.folder_path.append(folder_path)
+
+        self.check_file_existence()
+
+    
+
+    def check_file_existence(self):
+        '''
+        Check existence of html file
+        '''
+
+        self.remove_tempfile()
+        # count how many pairs of url need to download, i.e., 500
+        self.total_workload = len(self.url_list)
+        website = ['CoinMKT', 'Gecko']
+
+        for url_order in self.url_list:
+            start_time = time.time()
+
+            for web_url in url_order:
+                # 0 or 1, 0 for coinmkt, 1 for gecko
+                which_web = url_order.index(web_url)
+                self.web_name = website[which_web]
+                # url to download, i.e., https://www.coingecko.com/en/coins/tether
+                self.url = web_url
+
+                #locate file name
+                # return nth pair of url, it is also the the order for fname.
+                fname_order = self.url_list.index(url_order)
+                self.file_name = self.fname_list[fname_order][which_web]
+                self.file_path = os.path.join(self.folder_path[which_web], \
+                        self.file_name + '.html')
+
+                if not os.path.exists(self.file_path):
+                    self.start_scrapping()
+                else:
+                    print('\nFile' + self.output_format(website[which_web]\
+                            + ': ' + self.file_name) + 'already exist!\n\n')
+                    self.no_page_sleep = True
+
+
+            if self.count != self.total_workload:
+                if not self.no_page_sleep:
+                    #sleep_time = 1
+                    sleep_time = np.random.randint(5,10) + np.random.normal(8,3)
+
+                    round_time = time.time() - start_time
+                    remain_workload = self.total_workload - self.count
+                    lte(round_time, sleep_time, remain_workload)
+
+                    print('\nProgram sleeps for' + self.output_format(sleep_time) \
+                            + 'seconds...')
+                    print('-' * 100 + '\n\n')
+
+                    time.sleep(sleep_time)
+                
+                self.no_page_sleep = False
+
+            self.count += 1
+
+        print('\n' + '=' * 100 + '\nCongrats! You have finish downloading all DeepLink files!\n' + '=' * 100)
+
+
+
+    def start_scrapping(self):
+        '''
+        Start web scrapping.
+        '''
+
+        print('\nScrapping' + self.output_format(self.web_name + ': '\
+                + self.file_name) + '...' * 20 + '(%d/%d)' % \
+                (self.count, self.total_workload))
+        
+        r = requests.get(self.url, headers = self.headers)
+        html = r.text
+        self.save_html_file(html)
+        print(' ' * 4 + '----> Finish...')
+
+
+
+
+    def save_html_file(self, html):
+        '''
+        Save souce code to html file
+        '''
+
+        with open(self.file_path + '.temp', 'w', encoding = 'utf-8') as f:
+            f.write(html)
+        os.rename(self.file_path + '.temp', self.file_path)
+
+
+
+    def remove_tempfile(self):
+        '''
+        Remove temp file due to program break up.
+        '''
+
+        for folder in self.folder_path:
+            for rmfile in glob.glob(folder + '/*.temp'):
+                os.remove(rmfile)
+
+
+
+    def output_format(self, item):
+        '''
+        format output need to print
+        '''
+        return ' [ ' + str(item) + ' ] '
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
 
-    url_coin_base = 'https://coinmarketcap.com/' 
-    url_gecko_base = 'https://www.coingecko.com/en?page=' 
-    url_list = [(url_coin_base + str(i), url_gecko_base + str(i)) for i in range(1,6)]
-    folder_name = ['coinmktcap_html_file', 'gecko_html_file']
-    Scrapping(url_list, folder_name, 1).folder_setup()
+    deeplink_list = [('https://coinmarketcap.com/currencies/bitcoin','https://www.coingecko.com/en/coins/bitcoin'),('https://coinmarketcap.com/currencies/ethereum','https://www.coingecko.com/en/coins/ethereum'),('https://coinmarketcap.com/currencies/tether','https://www.coingecko.com/en/coins/tether')]
+    
+    file_names = name_extraction(deeplink_list)
+    deeplink_folder = ['coin_500deeplink', 'gecko_500deeplink']
+
+    DeepLink(deeplink_list, deeplink_folder, file_names).folder_setup()
+
+
+
+
+    #url_coin_base = 'https://coinmarketcap.com/' 
+    #url_gecko_base = 'https://www.coingecko.com/en?page=' 
+    #url_list = [(url_coin_base + str(i), url_gecko_base + str(i)) for i in range(1,6)]
+    #folder_name = ['coinmktcap_html_file', 'gecko_html_file']
+    #Scrapping(url_list, folder_name, 1).folder_setup()
+
+
+
 
 
 
