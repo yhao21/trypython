@@ -8,6 +8,10 @@ anaysis idea
 Questions
 ===============
 
+Difference between two web:
+				compare top 5 currencies' data from two websites, 
+				plot the 48hr data in a same graph, compare their difference.
+
 1. How attributes affects change of SIMETRI score?
 
 

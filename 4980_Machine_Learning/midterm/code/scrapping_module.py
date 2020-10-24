@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import os, requests, time, glob, re, datetime
 from time_countdown import workload_time_left as lte
 
@@ -238,8 +239,10 @@ class Scrapping():
 def name_extraction(url_list):
     '''
     Extract currency name from url
+    Backup name and url in pair
     '''
 
+    deeplinks_df = pd.DataFrame()
     coin_file_name = []
     gecko_file_name = []
 
@@ -251,14 +254,36 @@ def name_extraction(url_list):
             url_index = url_order.index(web_url)
             
             if url_index == 0:
-                coin_name = re.compile(r'/currencies/(.*)').findall(web_url)[0]
+                coin_name = re.compile(r'/currencies/(.*)').findall(web_url)[0].lower().replace(' ','')
                 coin_file_name.append(coin_name)
+                deeplinks_df = deeplinks_df.append({
+                    'name':coin_name,
+                    'deeplinks':web_url
+                    }, ignore_index = True)
 
             elif url_index == 1:
-                gecko_name = re.compile(r'/en/coins/(.*)').findall(web_url)[0]
+                gecko_name = re.compile(r'/en/coins/(.*)').findall(web_url)[0].lower().replace(' ','')
                 gecko_file_name.append(gecko_name)
+                deeplinks_df = deeplinks_df.append({
+                    'name':gecko_name,
+                    'deeplinks':web_url
+                    }, ignore_index = True)
     
+    order = ['name','deeplinks']
+    deeplinks_df = deeplinks_df[order]
+    deeplinks_df.to_csv('500deeplinks.csv')
+
+
     return [(coin, gecko) for coin, gecko in zip(coin_file_name, gecko_file_name)]
+
+
+
+
+
+
+
+
+
 
 
 class DeepLink():
@@ -401,19 +426,56 @@ class DeepLink():
 
 
 
+def merge_rating_links():
+    '''
+    Extract names and urls from coin and gecko deeplink info csv,
+    Pair urls (coin_url, gecko_url)
+    Pair names (coin_name, gecko_name)
+    '''
+
+    coin_link_df = pd.read_csv('Coin_500Deeplink_Info.csv')
+    coin_df = coin_link_df.drop(columns = ['Unnamed: 0','7_days_high','7_days_low',\
+            'all_time_high','all_time_low','circulating_supply', 'rank'])[['name', 'rating_url']]
+    coin_df = coin_df.iloc[:,:].values
+    coin_name = [item[0] for item in coin_df]
+    coin_url = [item[1] for item in coin_df]
+
+    gecko_link_df = pd.read_csv('Gecko_500Deeplink_Info.csv')
+    gecko_df = gecko_link_df.drop(columns = ['Unnamed: 0', 'rank','all_time_high',\
+            'all_time_low','7_days_high','7_days_low'])
+    gecko_df = gecko_df.iloc[:,:].values
+    # ['arpachain', 'medibloc', 'request', 'stpnetwork']
+    gecko_name = [item[0] for item in gecko_df]
+    # ['https://www.coingecko.com/en/coins/arpa-chain#ratings', 'https://www.coingecko.com/en/coins/medibloc#ratings'
+    gecko_url = [item[1] for item in gecko_df]
+
+    rating_url_list = [(coin, gecko) for coin, gecko in zip(coin_url, gecko_url)]
+    # [('bytom', 'arpachain'), ('nervosnetwork', 'medibloc'), ('swipe', 'request'), ('solana', 'stpnetwork')]
+    rating_name_list = [(coin, gecko) for coin, gecko in zip(coin_name, gecko_name)]
+
+    return rating_url_list, rating_name_list
+
+
+
+
 
 
 
 
 
 if __name__ == '__main__':
+    merge_rating_links()
 
-    deeplink_list = [('https://coinmarketcap.com/currencies/bitcoin','https://www.coingecko.com/en/coins/bitcoin'),('https://coinmarketcap.com/currencies/ethereum','https://www.coingecko.com/en/coins/ethereum'),('https://coinmarketcap.com/currencies/tether','https://www.coingecko.com/en/coins/tether')]
-    
-    file_names = name_extraction(deeplink_list)
-    deeplink_folder = ['coin_500deeplink', 'gecko_500deeplink']
 
-    DeepLink(deeplink_list, deeplink_folder, file_names).folder_setup()
+
+
+
+    #deeplink_list = [('https://coinmarketcap.com/currencies/bitcoin','https://www.coingecko.com/en/coins/bitcoin'),('https://coinmarketcap.com/currencies/ethereum','https://www.coingecko.com/en/coins/ethereum'),('https://coinmarketcap.com/currencies/tether','https://www.coingecko.com/en/coins/tether')]
+    #
+    #file_names = name_extraction(deeplink_list)
+    #deeplink_folder = ['coin_500deeplink', 'gecko_500deeplink']
+
+    #DeepLink(deeplink_list, deeplink_folder, file_names).folder_setup()
 
 
 

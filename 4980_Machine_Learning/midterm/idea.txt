@@ -21,6 +21,10 @@ second 15 mins  round1           page1                    +                     
 ...
 
 
+=============
+step 2
+=============
+
 1-1 parsing deep link and coin image
 				if folder == coinmkt:
 								execute coinmkt parsing code
@@ -33,11 +37,33 @@ second 15 mins  round1           page1                    +                     
 								1. coin name
 								2. deeplink url
 				
+save [name] and [deeplink] to [500deeplinks.csv]
+
+
+===============
+step 3
+===============
 
 1-3 downloading each deeplink from both website
 
+save to folder:
+				
+				[coin_500deeplink]
+				[gecko_500deeplink]
+
+
+===============
+step 4
+===============
 				
 1-4 get scores and other interested info
+				1. When parsing deeplinks, if page has no info we have right now,
+				   stop parsing, and save it to
+					 [Error_Log.csv]
+					 You can download it later (step: Recover missing data)
+
+				2. save df of all infos including score links to
+								500Deeplink_Info.csv
 
 
 

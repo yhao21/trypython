@@ -64,7 +64,7 @@ class Parsing():
             for row in rows:
                 tds = row.find_all('td')
                 rank = tds[1].find('p').string
-                name = tds[2].find('div').find('p').string.replace(' ','')
+                name = tds[2].find('div').find('p').string.replace(' ','').lower()
                 abbrev = tds[2].find('div').find('p', \
                         {'class':'Text-sc-1eb5slv-0 eweNDy coin-item-symbol'}).string
                 price = tds[3].find('div').find('a').string.replace('$','').replace(',','')
@@ -141,7 +141,7 @@ class Parsing():
                 rank = re.compile(r'\d*').findall(tds[1].string)[1]
                 # ['', 'Bitcoin',  'Diamond' ,'']
                 name_frac = re.compile(r'(\w*)').findall(tds[2].find('a',\
-                        {'class':'d-none d-lg-flex font-bold align-items-center justify-content-between'}).string.replace(' ',''))
+                        {'class':'d-none d-lg-flex font-bold align-items-center justify-content-between'}).string.replace(' ','').lower())
                 name = name_frac[1]
                 for name_char in name_frac[2:]:
                     if name_char != '':

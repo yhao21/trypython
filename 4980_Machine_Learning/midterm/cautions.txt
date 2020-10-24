@@ -1,0 +1,13 @@
+1. No data in deeplink
+				sometimes website does not have detail info for particular coin,
+				if that happend,
+								1. use try-except to skip
+								2. add error info to a dataframe
+								3. print and save dataframe to a csv file. Help user to check and re download.
+												dataframe should contain the following info:
+																1. deeplink url
+																2. coin name(should be the file name, so that you can remove the
+																existing html file when you re-download)
+								4. Name of dataframe:
+												[Error Log]
+

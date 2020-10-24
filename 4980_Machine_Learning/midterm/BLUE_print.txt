@@ -1,0 +1,68 @@
+step 1 download 48 hrs data
+				|
+				|________scrapping_module.py
+												|
+												|________Scrapping().folder_setup()
+																  [ coinmktcap_html_file ]
+																	[ gecko_html_file ]
+
+step 2 parsing 48 hrs data and deeplinks
+				|
+				|________parsing_module.py
+				|								|
+				|								|________Parsing(folder).parsing_coin_html()
+				|								|					[ CoinMKT_48hrs_data.csv ]
+				|								|
+				|								|________Parsing(folder).parsing_gecko_html()
+				|								|				  [ Gecko_48hrs_data.csv]
+				|               |
+				|_______________|________Receive deeplinks from the above two.
+				|																(URL)
+				|
+				|________scrapping_module.py
+												|
+												|________name_extraction()
+																 receive currency names from two webs.
+																 save all 1000 links from both webs to
+																  [ 500deeplinks.csv ]
+
+step 3 scrapping 500 currencies deeplink info
+				|
+				|  receiving currency names and deeplinks (URL) from step 2.
+				|________scrapping_module.py
+												|
+												|________DeepLink().folder_setup()
+																  [ coin_500deeplink ]
+																	[ gecko_500deeplink ]
+
+step4 parsing 500 deeplinks from both webs (1000 in total)
+				|
+				|_________deeplink_parsing.py
+												|
+												|________ParsingDeepLink().parsing_coin_html()
+												|					[ Coin_500Deeplink_Info.csv ]
+												|
+												|________ParsingDeepLink().parsing_gecko_html()
+												|				  [ Gecko_500Deeplink_Info.csv ]
+												|
+												|________If fail parsing, save name and deeplink to
+																  [ Error Log]
+																 Can these data later. Fail in parsing
+																 process probably because website is updating
+																 data (more likely at nigh).
+
+step 5 scrapping rating page (500 currencies from both webs)
+				read coin_500deeplink_Info.csv and gecko_500deeplink_Info.csv
+
+				pair urls, pair names
+
+				start scrapping in pairs
+
+
+
+
+
+
+
+
+

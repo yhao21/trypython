@@ -2,5 +2,7 @@ coinmktcap_html_file/*.html
 gecko_html_file/*.html
 code/coin_500deeplink/*.html
 code/coinmktcap_html_file/*.html
+code/coin_rating_html/*.html
 code/gecko_500deeplink/*.html
 code/gecko_html_file/*.html
+code/gecko_rating_html/*.html
