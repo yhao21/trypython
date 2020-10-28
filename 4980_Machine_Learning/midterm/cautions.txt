@@ -10,4 +10,6 @@
 																existing html file when you re-download)
 								4. Name of dataframe:
 												[Error Log]
-
+2. parsing deeplink:
+				you must run 'parsing_coin_deeplink' first, then gecko's, because coin's function can
+				initialize 'Error_Log.csv'

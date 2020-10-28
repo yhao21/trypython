@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import os, requests, time, glob, re, datetime
 from time_countdown import workload_time_left as lte
+from selenium import webdriver
 
 
 
@@ -154,10 +155,11 @@ class Scrapping():
             print(self.finish_repeats() + '\n    ----> Sleep for 15 mins...')
             print('-' * 100 + '\n\n')
             self.count += 1
-            # test
-            if not self.no_repetition_sleep:
-                time.sleep(15 * 60)
-            self.no_repetition_sleep = False
+            if self.count < self.repeat_times + 1:
+                # test
+                if not self.no_repetition_sleep:
+                    time.sleep(15 * 60)
+                self.no_repetition_sleep = False
 
 
         print('\nDone! You have downloaded %s hour(s) data!' % self.output_format(self.total_hours))
@@ -287,7 +289,7 @@ def name_extraction(url_list):
 
 
 class DeepLink():
-    def __init__(self, url_list, folder_names, file_name):
+    def __init__(self, url_list, folder_names, file_name, mode = 0):
         self.path = os.getcwd()
         self.url_list = url_list
         self.folder_list = folder_names
@@ -297,6 +299,7 @@ class DeepLink():
         self.count = 1
         self.no_page_sleep = False
         self.headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'}
+        self.mode = ['requests', 'selenium'][mode]
 
 
 
@@ -388,9 +391,20 @@ class DeepLink():
                 + self.file_name) + '...' * 20 + '(%d/%d)' % \
                 (self.count, self.total_workload))
         
-        r = requests.get(self.url, headers = self.headers)
-        html = r.text
-        self.save_html_file(html)
+        # mode = 0 by default, self.mode = ['requests', 'selenium']
+        if self.mode == 'requests':
+            r = requests.get(self.url, headers = self.headers)
+            html = r.text
+            self.save_html_file(html)
+        
+        elif self.mode == 'selenium':
+            driver = webdriver.Chrome()
+            driver.get(self.url)
+            time.sleep(5)
+            html = driver.page_source
+            driver.close()
+            self.save_html_file(html)
+
         print(' ' * 4 + '----> Finish...')
 
 
