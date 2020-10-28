@@ -6,3 +6,10 @@ code/coin_rating_html/*.html
 code/gecko_500deeplink/*.html
 code/gecko_html_file/*.html
 code/gecko_rating_html/*.html
+TEST/coin_500deeplink/*.html
+TEST/coin_rating_html/*.html
+TEST/coinmktcap_html_file/*.html
+TEST/gecko_500deeplink/*.html
+TEST/gecko_html_file/*.html
+TEST/gecko_rating_html/*.html
+
