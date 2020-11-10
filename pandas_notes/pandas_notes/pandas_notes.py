@@ -177,6 +177,24 @@ except the last three rows
     a = df.loc[~df['Sunrise_Sunset'].str.contains('Day')]
 
     加上波浪线 ~ 即可
+
+
+18. Delete row with NaN, delete empty line
+    
+    df = df.dropna()
+
+
+19. reset the index:
+
+    df = df.reset_index(drop = True)
+
+
+20. combine dataframe 合并dataframe
+    水平合并
+    pd.concat([df1, df2], axis = 1)
+    垂直合并
+    pd.concat([df1, df2], axis = 0)
+
 """
 
 
@@ -194,7 +212,10 @@ cdf.to_csv('clean_df.csv', index = None)
 
 
 
-
+df = pd.DataFrame(['1111','12313', 'ffff'])
+df.columns = ['name']
+a = df.loc[df['name'].str.contains('fff')]
+print(a)
 
 
 
