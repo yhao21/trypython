@@ -88,6 +88,10 @@ number of centers:  5
 
 inertia goes down when number of center increase. This is reasonable.
 inertia is the distance, and it must be going down when number of centers rises
+
+
+
+What are the meaning of these groups.
 '''
 
 
