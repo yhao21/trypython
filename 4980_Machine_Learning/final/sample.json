@@ -1,0 +1,42 @@
+{
+    "name": "PHO 43",
+    "address": "2844 N 43rd Ave",
+    "city": "Phoenix",
+    "state": "AZ",
+    "postal_code": "85009",
+    "latitude": 33.4794638,
+    "longitude": -112.1521331,
+    "stars": 4.5,
+    "review_count": 492,
+    "is_open": 1,
+    "attributes": {
+        "OutdoorSeating": "False",
+        "BusinessAcceptsCreditCards": "True",
+        "RestaurantsTakeOut": "True",
+        "RestaurantsDelivery": "False",
+        "RestaurantsGoodForGroups": "True",
+        "RestaurantsPriceRange2": "1",
+        "WiFi": "u'no'",
+        "BikeParking": "False",
+        "Alcohol": "u'none'",
+        "GoodForKids": "True",
+        "Ambience": "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': False, 'casual': True}",
+        "BusinessParking": "{'garage': False, 'street': False, 'validated': False, 'lot': True, 'valet': False}",
+        "Caters": "False",
+        "RestaurantsReservations": "False",
+        "BusinessAcceptsBitcoin": "False",
+        "RestaurantsAttire": "u'casual'",
+        "NoiseLevel": "u'average'",
+        "GoodForMeal": "{'dessert': False, 'latenight': False, 'lunch': True, 'dinner': True, 'brunch': False, 'breakfast': False}",
+        "HasTV": "False"
+    },
+    "categories": "Vietnamese, Restaurants",
+    "hours": {
+        "Monday": "9:0-16:0",
+        "Wednesday": "9:0-18:0",
+        "Thursday": "9:0-18:0",
+        "Friday": "9:0-18:0",
+        "Saturday": "9:0-18:0",
+        "Sunday": "9:0-18:0"
+    }
+}

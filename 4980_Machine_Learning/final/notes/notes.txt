@@ -1,0 +1,99 @@
+1. some don't have item 'hours' (no Mon-Fri)
+
+				regression with hours
+
+
+				regression without hours
+
+
+
+				some restraunt do not provide working hours even they have item 'hours', i.e.,
+				{'Monday': '0:0-0:0', 'Tuesday': '0:0-0:0', 'Wednesday': '0:0-0:0', 'Thursday':
+				 '0:0-0:0', 'Friday': '0:0-0:0', 'Saturday': '0:0-0:0', 'Sunday': '0:0-0:0'}
+
+2. all attributes:
+				ByAppointmentOnly
+				BusinessAcceptsCreditCards
+				BusinessAcceptsBitcoin
+				OutdoorSeating
+				RestaurantsTakeOut
+				RestaurantsDelivery
+				RestaurantsGoodForGroups
+				RestaurantsPriceRange2
+				WiFi
+				BikeParking
+				Alcohol
+				GoodForKids
+				Ambience
+				BusinessParking
+				Caters
+				RestaurantsReservations
+				RestaurantsAttire
+				NoiseLevel
+				GoodForMeal
+				HasTV
+				DogsAllowed
+				WheelchairAccessible
+				Corkage
+				BYOBCorkage
+				AcceptsInsurance
+				GoodForDancing
+				Smoking
+				HappyHour
+				CoatCheck
+				Music
+				RestaurantsTableService
+				BestNights
+				DriveThru
+				HairSpecializesIn
+				AgesAllowed
+				Open24Hours
+				DietaryRestrictions
+				RestaurantsCounterService
+				BYOB
+
+
+3. attr with NIU:
+
+
+                          name  niu_count  percent_niu
+0            ByAppointmentOnly   121093.0     0.756831
+1   BusinessAcceptsCreditCards    65975.0     0.412344
+2       BusinessAcceptsBitcoin   149148.0     0.932175
+3               OutdoorSeating   114469.0     0.715431
+4           RestaurantsTakeOut   108393.0     0.677456
+5          RestaurantsDelivery   116340.0     0.727125
+6     RestaurantsGoodForGroups   114502.0     0.715638
+7       RestaurantsPriceRange2    70154.0     0.438462
+8                         WiFi   118399.0     0.739994
+9                  BikeParking    89074.0     0.556713
+10                     Alcohol   119738.0     0.748363
+11                 GoodForKids   104901.0     0.655631
+12                    Ambience   119983.0     0.749894
+13             BusinessParking    73736.0     0.460850
+14                      Caters   126276.0     0.789225
+15     RestaurantsReservations   116512.0     0.728200
+16           RestaurantsAttire   119611.0     0.747569
+17                  NoiseLevel   123489.0     0.771806
+18                 GoodForMeal   135091.0     0.844319
+19                       HasTV   120006.0     0.750038
+20                 DogsAllowed   153874.0     0.961712
+21        WheelchairAccessible   143391.0     0.896194
+22                     Corkage   159447.0     0.996544
+23                 BYOBCorkage   158816.0     0.992600
+24            AcceptsInsurance   153982.0     0.962387
+25              GoodForDancing   156064.0     0.975400
+26                     Smoking   157078.0     0.981738
+27                   HappyHour   155681.0     0.973006
+28                   CoatCheck   157081.0     0.981756
+29                       Music   155666.0     0.972912
+30     RestaurantsTableService   145727.0     0.910794
+31                  BestNights   157114.0     0.981962
+32                   DriveThru   157315.0     0.983219
+33           HairSpecializesIn   159157.0     0.994731
+34                 AgesAllowed   159895.0     0.999344
+35                 Open24Hours   159988.0     0.999925
+36         DietaryRestrictions   159951.0     0.999694
+37   RestaurantsCounterService   159989.0     0.999931
+38                        BYOB   159974.0     0.999838
+
