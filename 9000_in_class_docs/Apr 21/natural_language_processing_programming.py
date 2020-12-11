@@ -13,6 +13,10 @@ import string
 import nltk
 #nltk is a package to recognize natural language.
 
+
+nltk.download('stopwords')
+
+
 from nltk.corpus import stopwords
 #stopwords 只is are之类的无实际意义的单词
 
