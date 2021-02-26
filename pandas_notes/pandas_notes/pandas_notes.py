@@ -195,6 +195,21 @@ except the last three rows
     垂直合并
     pd.concat([df1, df2], axis = 0)
 
+
+21. Count Frequency 
+    df_frequency = df['Crime Type'].value_counts()
+    
+    it will return a frequency for unique categories in this col
+        HUMAN TRAFFICKING                        3
+        PUBLIC INDECENCY                         3
+        OTHER NARCOTIC VIOLATION                 2
+        Name: Primary Type, dtype: int64
+
+22. list unique value in a column
+    pd.unique(df['Crime Trype']))
+
+
+
 """
 
 
