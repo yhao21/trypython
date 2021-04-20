@@ -1,4 +1,29 @@
 import re, datetime
+import numpy as np
+
+
+
+
+def get_power(input_num, base_numb):
+    '''
+    state with:   base^n = x
+    take log at both side:
+        n*log(base) = log(x)
+        n = log(x)/log(base)
+    example:
+        we want to comput n in 2^n = 8
+        n = log(8)/log(2)
+          = 3
+
+    Usage:
+        power_number = get_power(input_num = 8, base_numb = 2)
+    '''
+
+    return np.log(input_num)/np.log(base_numb)
+
+
+
+
 
 def to_num(df_string):
     """
