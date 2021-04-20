@@ -2,6 +2,56 @@ import re, datetime
 import numpy as np
 
 
+def compute_n_lag_return(my_series, my_lags):
+    '''
+    compute price difference for n days
+    my_series:
+        This is a series you want deal with price diff
+    my_lags:
+        It stands for the length of period for price_diff.
+        If my_lags = 1, then you compare price between yesterday and
+        today.
+            price_diff = p_t - p_{t-1}
+
+        If my_se = 2, then
+            price_diff = p_t - p_{t - 2}
+    Usage:
+        Suppose you want to see diff between each number in the series
+        Code:
+            my_se = [4,3,2,1]
+            my_diff = compute_n_lag_return(my_se, 1)
+        my_diff would be [-1,-1,-1]
+        
+        It actually do this:
+            3-4 = -1    append to list
+            2-3 = -1    append to list
+            1-2 = -1    append to list
+        
+    '''
+    diff_list = []
+    period_index = 0
+    last_value = my_series[0]
+    for each_price in my_series:
+            
+        if period_index == my_lags :
+            price_diff = each_price - last_value
+            last_value = each_price
+            print(price_diff)
+            # must reset the period_index, otherwise it
+            # will blow up. And you only get one price_diff
+            period_index = 0
+            diff_list.append(price_diff)
+
+        period_index += 1
+    
+    return diff_list
+
+
+
+
+
+
+
 
 
 def get_power(input_num, base_numb):

@@ -205,10 +205,26 @@ except the last three rows
         OTHER NARCOTIC VIOLATION                 2
         Name: Primary Type, dtype: int64
 
+
+    To obtain the categories:
+    df_frequency = df['Crime Type'].value_counts().index.tolist()
+        you receive a list ['HUMAN TRAFFICKING','PUBLIC INDECENCY', ...]
+
+
 22. list unique value in a column
     pd.unique(df['Crime Trype']))
 
 
+
+23. plot the density of a series
+    consider you have a log price series, lnprice you want to plot the
+    density, then
+        dens_series = pd.Series(lnprice)
+        dens_series.plot.density()  # this will generate plt obj
+        plt.show()
+
+    more details see:
+    https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.Series.plot.density.html
 
 """
 
