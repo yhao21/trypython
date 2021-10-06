@@ -179,6 +179,11 @@ except the last three rows
     加上波浪线 ~ 即可
 
 
+    Or:
+
+    a = df[df['mktcap'].astype('str').str.contains('NIF')]
+
+
 18. Delete row with NaN, delete empty line
     
     df = df.dropna()

@@ -2,6 +2,26 @@ import re, datetime
 import numpy as np
 
 
+
+def remove_NIF(df, x_str):
+    '''
+    input df must be a pd.DataFrame
+    remove rows contain x_str (string)
+    '''
+
+    row_index = []
+    for col in df.columns.values:
+        row_index += df[df[col].astype('str').str.contains(x_str)].index.tolist()
+    print(f'Remove rows: {row_index}')
+    df = df.drop(row_index, axis = 0)
+    df = df.reset_index()
+
+    return df
+
+
+
+
+
 def compute_n_lag_return(my_series, my_lags):
     '''
     compute price difference for n days
