@@ -1914,10 +1914,53 @@ array([[-8. , -3.5,  4. ,  2.5, -2. ],
        [ 7. ,  3. , -3.5, -1.5,  3. ],
        [-1. ,  4.5,  5. , -2. , -4. ]])]
 
+
+
+
+
+
+
+
+
+====================
+1. find the index of a particular value by using np.where()
+
+
+    example: find the index of whose value is '.'
+    return_list = tbill_df['rate_of_return'].values 
+    row_list = np.where(return_list == '.')[0]
+
+
+
+
+====================
+
+np.ravel() 把多维变成一个list
+
+
+
+a = np.array([[1,1,1],[2,2,2]])
+b = a.ravel()
+print(b):   [1 1 1 2 2 2]
+
+
+
+
+
+
 """
-a = np.random.randint(0,20,(3,5))
-print(a)
-b = np.gradient(a)
+a = np.array([[1,1,1],[2,2,2]])
+b = a.ravel()
 print(b)
+
+
+
+
+
+
+
+
+
+
 
 

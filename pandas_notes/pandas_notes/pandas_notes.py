@@ -231,6 +231,27 @@ except the last three rows
     more details see:
     https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.Series.plot.density.html
 
+
+
+
+
+
+24. change value for a particular cell:
+
+    df.at[row_index, column_name] = value
+
+    example:
+    crypto_df.at[row_index, 'open_price'] = 1
+
+
+
+25. extract a particular value from df
+
+    value = df.loc[[row_index]][column_name].values[0]
+
+
+
+
 """
 
 
