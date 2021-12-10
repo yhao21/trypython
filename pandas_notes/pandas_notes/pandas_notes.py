@@ -219,6 +219,10 @@ except the last three rows
 22. list unique value in a column
     pd.unique(df['Crime Trype']))
 
+    or
+
+    self.df['hour'].unique()
+
 
 
 23. plot the density of a series
@@ -249,6 +253,15 @@ except the last three rows
 
     value = df.loc[[row_index]][column_name].values[0]
 
+
+
+
+26. print rows contain values between a range
+
+    For example, print beta (coef) between 0.99 and 1.01:
+
+    df = pd.read_csv('csv_folder/capm_beta.csv')
+    closely_to_mkt = df[df['coef'].between(0.99, 1.01)]
 
 
 
