@@ -1,4 +1,5 @@
 import time
+import matplotlib.pyplot as plt
 
 """
 1. convert Uppercase str to lower case using lower()
@@ -27,8 +28,22 @@ import time
     print(a.capitalize())
 
     result: Hello
+
+
+4. Extend a list:
+    a = [1,2,3]
+    b = [4,5,6]
+    a.extend(b)
+    print(a)
+    result: [1, 2, 3, 4, 5, 6]
+
 """
 
 
 a = 'HELLO'
 print(a.capitalize())
+
+
+
+
+
