@@ -1,0 +1,17 @@
+sudo apt-get update
+sudo apt install nvidia-cuda-toolkit
+
+
+sudo find / -name 'libcudart.so*'
+
+/usr/lib/x86_64-linux-gnu/libcudart.so.10.1
+/usr/lib/x86_64-linux-gnu/libcudart.so
+
+
+export PATH=/usr/lib/x86_64-linux-gnu${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+
+
+sudo chmod a+r /usr/lib/x86_64-linux-gnu/libcuda*

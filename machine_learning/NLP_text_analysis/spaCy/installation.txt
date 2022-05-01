@@ -1,0 +1,13 @@
+
+download spacy and model
+
+    sudo pip3.8 install spacy
+    sudo pip3.8 install -U 'spacy[cuda101]'   for gpu ML
+
+    sudo python3.8 -m spacy download en_core_web_sm          # a small english model  (efficient)
+    sudo python3.8 -m spacy download en_core_web_md          # medium model (contain word vectors)
+    sudo python3.8 -m spacy download en_core_web_trf          # an accurate english model  (accurate)
+
+
+
+		pip3.8 install textacy

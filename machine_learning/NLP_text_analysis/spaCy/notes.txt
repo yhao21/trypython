@@ -1,0 +1,183 @@
+
+quick check:
+
+
+
+doc.sents			sentence recognization
+doc.ents			entity recognization 
+
+
+
+
+
+
+
+
+
+
+
+
+
+with open('data/yelp_review.txt', 'r') as f:
+    text = f.read()
+nlp = spacy.load('en_core_web_lg')
+doc = nlp(text)
+
+
+
+
+
+###------NER named entity recognization------###
+
+	  ents = list(doc.ents)	
+		for ent in ents:
+				print(ent.label_)
+
+
+		ent.label_     print out the label for an entity.
+
+
+
+
+
+
+###------split sentences------###   
+		
+		doc.sents          return a generater, remember to convert it to a list
+
+				
+		sentences = doc.sents
+		print(sentences)
+		print(list(sentences))
+
+
+
+###------Tokenization------###
+		# tokenize a sentence, token: a work, a punctuation, etc.
+		
+		sentence = sentences[1]
+		for token in sentence:
+		    print(token.text, token.pos_)
+		
+		
+		
+		
+		5 MONEY                  is AUX
+		2 hours TIME             easy ADJ
+		Saturday DATE            and CCONJ
+		spiceCherry GPE          $ SYM
+		10/10 CARDINAL           5 NUM
+		100% PERCENT             for ADP
+		Parking NOUN             2 NUM
+		nearby ADV               hours NOUN
+		                         . PUNCT
+		
+		
+		
+##------noun_chunks------##
+
+# it will grab noun phrase, instead of just noun itself.
+		Let's compare the difference:
+
+		## grab noun:
+
+		nouns = []
+		verb = []
+		for sentence in sentences:
+		    for token in sentence:
+		        if token.pos_ == 'NOUN':
+		            nouns.append(token.text)
+		
+		return:
+
+		['place', 'summer', 'doors', 'Parking', 'hours', 'brunch', 'reservation', 'server', 'suggestions', 'brunch', 'menu', 'brunch', 'menus', 'cocktails', 'rim', 'mule', 'liking', 'food',
+		'blueberry', 'muffin', 'skillet', 'waffles-', 'funnel', 'cake', 'cake', 'order', 'salad', '%', 'things', 'menu', 'it.*Also', 'lady', 'bathroom', 'dad', 'photos']
+
+
+		## grab noun_chunks:
+
+		# A built-in method:
+		# it will grab noun phrase, instead of just noun itself.
+		print(list(doc.noun_chunks))
+
+		[this place, the summer, the doors, all, Parking, 2 hours, a Saturday, brunch, a reservation, which, they, us, Great, friendly server, who, suggestions, the brunch menu, which, me,
+		I, most brunch menus, theirs, Ordered cocktails, Bloody Mary, the rim, it, my liking, Ordered food-The blueberry muffin skillet, which, it, waffles-, so good, especially the funnel 
+		cake, cake, Benny-, the order, a little salad, 100%, more things, the menu, it, that, it.*Also, you, a lady, myself-, the cute bathroom, vintage hot dad photos]
+
+
+		## And we can find chunk contain a certain word:
+
+				chunks = list(doc.noun_chunks)
+				for chunk in chunks:
+				    if 'food' in chunk.text:
+				        print(chunk)
+		
+
+
+
+
+
+
+###------pipelines------###
+Check current piplines:
+
+		current_pipe = nlp.analyze_pipes()
+		#print(current_pipe)
+		with open('current_pipeline.json', 'w') as g:
+		    json.dump(current_pipe, g)
+
+
+
+
+##------Customize piplines------##
+
+#------Add patterns------#
+
+open json, in line 55, you can see <doc.ents> is under ner.
+So, if the ner pipe cannot recognize "fried chicken wing", even if we add it to the 
+entity, the machine still cannot label "fried chicken wing" as "Food"
+Two methods to fix this:
+    1. Give your ruler the ability to overwrite the ner
+    2. put it before the ner before the pipeline!!! (let's do this)
+
+
+
+nlp1 = spacy.load('en_core_web_lg')
+
+## here we pass an argument, let our ruler located before the ner pipe!!
+## argument can be <before> <after>
+
+ruler = nlp1.add_pipe("entity_ruler", before = 'ner') 
+
+patterns = [
+        {
+            'label':'PERSON',
+            'pattern': "Mr. Hao"
+            },
+        {
+            'label':'Food',
+            'pattern': "fried chicken wings"
+            }
+        ]
+
+
+ruler.add_patterns(patterns)
+doc1 = nlp1(text)
+
+for ent in doc1.ents:
+    print(ent.text, ent.label_)
+
+# Great!!!
+# KFC ORG
+# fried chicken wings Food
+# Mr. Hao PERSON
+
+
+
+
+
+
+
+
+
+

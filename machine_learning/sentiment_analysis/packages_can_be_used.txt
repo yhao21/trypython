@@ -1,0 +1,12 @@
+1. transformers
+		sudo pip3.8 install -q transformers
+
+		doesn't work well
+
+
+
+
+2. text2emotion
+		sudo pip3.8 install text2emotion
+
+		it works badly
