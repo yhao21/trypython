@@ -1,0 +1,75 @@
+
+
+
+
+登录界面，使用用户名密码登录， 输入一个错误密码，点击登录
+
+在Network中找到：    basic  文件
+此时可以查看到需要填写的headers 和 data （payload）
+
+
+
+        header = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+            'Referer': 'https://accounts.douban.com/passport/login_popup?login_source=anony',
+            'Origin': 'https://accounts.douban.com',
+            'content-Type': 'application/x-www-form-urlencoded',
+            'x-requested-with': 'XMLHttpRequest',
+            'accept': 'application/json',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'zh-CN,zh;q=0.9',
+            'connection': 'keep-alive'
+            , 'Host': 'accounts.douban.com'
+        }
+    
+        data = {
+            'ck' : '',
+            'name': '',
+            'password': '',
+            'remember': 'false',
+            'ticket': ''
+        }
+
+
+=========================================================
+
+
+    def login(self):
+        url = 'https://accounts.douban.com/j/mobile/login/basic'
+        header = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+            'Referer': 'https://accounts.douban.com/passport/login_popup?login_source=anony',
+            'Origin': 'https://accounts.douban.com',
+            'content-Type': 'application/x-www-form-urlencoded',
+            'x-requested-with': 'XMLHttpRequest',
+            'accept': 'application/json',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'zh-CN,zh;q=0.9',
+            'connection': 'keep-alive'
+            , 'Host': 'accounts.douban.com'
+        }
+    
+        data = {
+            'ck' : '',
+            'name': '',
+            'password': '',
+            'remember': 'false',
+            'ticket': ''
+        }
+        data['name'] = self.usr_name
+        data['password'] = self.password
+        req = requests.post(url, headers=header, data=data, verify=False)
+        cookies = requests.utils.dict_from_cookiejar(req.cookies)
+        return cookies   
+
+
+    def getcomment(self):
+        header = {
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+                }
+        
+        
+        url = 'https://movie.douban.com/subject/26289144/comments?start=100&limit=100&status=P&sort=new_score'
+        r = requests.get(self.url, headers = header, cookies = self.cookies)
+        html = r.text
+

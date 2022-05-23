@@ -248,6 +248,21 @@ except the last three rows
     crypto_df.at[row_index, 'open_price'] = 1
 
 
+    ## Or, to change the value which can be find following a certain condition:
+
+    raw_df:
+              col1 col2
+            0    a    b
+            1    c    d
+    Want to change "d" to "2"
+
+        a.loc[a['col1'] == 'c', ['col2']] = 2
+
+              col1 col2
+            0    a    b
+            1    c    2
+
+
 
 25. extract a particular value from df
 
