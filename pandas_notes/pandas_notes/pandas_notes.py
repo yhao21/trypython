@@ -279,6 +279,34 @@ except the last three rows
     closely_to_mkt = df[df['coef'].between(0.99, 1.01)]
 
 
+27. fill missing data with the mean of the entire dataset
+(which is useless...)
+data = data_df.copy()
+data.fillna(data.mean(), inplace = True)
+
+28 data imputation (missing data)
+##Method 1: use KNN model
+
+    from sklearn.impute import KNNImputer
+    
+    imputer = KNNImputer(n_neighbors = 2, weights = 'uniform')
+    data3 = pd.DataFrame(imputer.fit_transform(df))
+    data3.columns = df.columns
+    
+##Method 2: IterativeImputer
+https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImputer.html
+##Method 3: MissingIndicatorhttps://scikit-learn.org/stable/modules/generated/sklearn.impute.MissingIndicator.html
+
+
+
+29 Standardization:
+
+    Method 1: Box-Cox
+    Method 2: Yeo-Johnson
+
+
+
+
 
 """
 
