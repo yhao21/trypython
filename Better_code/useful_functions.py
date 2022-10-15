@@ -46,7 +46,21 @@ import matplotlib.pyplot as plt
 
     result: 84dabb2632bed5637a62524be43f7067237dc920
 
+6. check if the elements in a list in contained in another list
+    We can use: all(), any()
 
+    Check if all elements in a are in b. If yes, print a
+
+    a = [1,2,3,4]
+    b = [1,2,3,4]
+    
+    
+    if all(item in b for item in a):
+        print(a)
+
+
+    You can check if any elements in a are in b by replacing all() by any()
+    
 """
 
 
