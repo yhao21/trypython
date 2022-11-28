@@ -1947,6 +1947,16 @@ print(b):   [1 1 1 2 2 2]
 
 
 
+====================
+Remove a list of items from a ndarray (setdiff1d).
+    If you want to remove items in b from a:
+
+    a = np.array([1,2,4,5])
+    b = np.array([1,5])
+    a = np.setdiff1d(a,b)
+    print(a)
+    #   result: [2 4]
+
 
 """
 a = np.array([[1,1,1],[2,2,2]])

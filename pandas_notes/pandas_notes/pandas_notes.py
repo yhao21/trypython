@@ -306,7 +306,51 @@ https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImpute
 
 
 
+30 groupby
+    if you want to return a df, set as_index = False. Otherwise, it will return a Series
 
+    Here "transfer" is a column name.
+
+    df = df.groupby(['timestamp'], as_index=False).transfer.sum()
+
+
+
+31 generate a list of date
+
+    
+    date_list = pd.date_range(start = '2015-08-07', end = '2022-09-30')
+
+
+
+32 merge two column into a stacked one column
+
+
+    Given a 3 by 2 dataframe, df:
+    
+       x  y
+    0  1  2
+    1  3  4
+    2  5  6
+    
+    We can use <df.unstack()> to merge column x and y to a single stacked column below:
+    
+    0    1
+    1    3
+    2    5
+    3    2
+    4    4
+    5    6
+    
+    
+    Code:
+    
+            df = pd.DataFrame([[1,2],[3,4],[5,6]], columns = ['x', 'y'])
+            df = df.unstack().reset_index(drop = True)
+    
+    
+    
+    **** <df.unstack() > will concat column "y" below column x ****
+    
 
 """
 

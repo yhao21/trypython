@@ -48,6 +48,12 @@ plt.savefig(f'figures/{pic_name}.png')
 plt.clf()
 
 
+###------config plots------###
+
+    plt.rcParams.update({
+        'figure.figsize':(50,30),
+        'font.size':40
+        })
 
 
 
