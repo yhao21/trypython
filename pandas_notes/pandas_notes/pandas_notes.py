@@ -51,6 +51,18 @@ except the last three rows
     if you want to print row 1-3 with columns 1-3
     print(df.iloc[1:4, 1:4])
 
+6.1 find a row using row index
+    
+
+    Row example:
+            YYYYMM    ID IDPREV  DATEPR IndividualID
+    313937  202309  2101   1082  202303         null
+
+    Suppose you want to find this row, and the row index is 313937, you can choose:
+    1. df.loc[313937], which will return a serie.
+    2. df.loc[[313937]], which will return a df.
+
+
 
 
 7. print specific cell
@@ -129,6 +141,16 @@ except the last three rows
 
 
 
+    You can also sort by index:
+        After you count frequency of each value in a column using 
+            freq = df['col'].value_counts(),
+        the series is sorted by frequency, instead of the index.
+
+        You can use <series.sort_index()> to sort by index, i.e., 
+            freq.sort_index()
+
+
+
 13. 删除某一列
     df = df.drop(columns = ['<col name>'])
     要将删除后的df赋值给一个新的变量。 这里重新赋值给df等于替换掉了原有df。
@@ -187,6 +209,16 @@ except the last three rows
 18. Delete row with NaN, delete empty line
     
     df = df.dropna()
+
+18.1 Replace nan by '':
+    df = df.replace(np.nan, '')
+
+18.2 Replace values in multiple rows
+    Replace 0 by 10 in column A and B
+        df = df.replace({'A':{0:10}, 'B':{0:10}})
+18.3 Replace multiple values in a same column.
+    Replace 0 by 1, 2 by 5
+        df = df.replace({'A':{0:1, 2:5}})
 
 
 19. reset the index:
@@ -352,27 +384,343 @@ https://scikit-learn.org/stable/modules/generated/sklearn.impute.IterativeImpute
     **** <df.unstack() > will concat column "y" below column x ****
     
 
+
+33 convert columns to datetime
+    official documents: https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html
+
+
+
+    You can also state the input format. For example, if the input is 202301, you can
+    set the format as:
+        
+        df['YYYYMM'] = pd.to_datetime(df['YYYYMM'], format = "%Y%m")
+        Result: 2023-09
+
+    If you want to convert datetime to strings in particular format, you can set the 
+    format you preferred by using
+        df['YYYYMM'] = pd.to_datetime(df['YYYYMM'], format = "%Y%m").dt.strftime('%Y-%m')
+
+
+    dataset['Date'] = pd.to_datetime(dataset['Date'])
+    print(dataset['Date'])
+
+    
+    
+    
+    # extract year info from datetime
+    dataset['year'] = dataset['Date'].dt.year
+    # extract month info from datetime
+    dataset['month'] = dataset['Date'].dt.month
+    # extract hour info from datetime
+    dataset['hour'] = dataset['Date'].dt.hour
+    dataset['minute'] = dataset['Date'].dt.hour
+    
+    
+    
+    
+    ## regroup hours to different groups, i.e., group 0 = 0 AM to 3 AM
+    dataset['hour_slot'] = np.select([
+        (dataset['hour'] < 4),
+        (dataset['hour'] < 8),
+        (dataset['hour'] < 12),
+        (dataset['hour'] < 16),
+        (dataset['hour'] < 20),
+        (dataset['hour'] < 24),
+        ],[0,1,2,3,4,5])
+    
+    
+    
+    dataset['minute_slot'] = np.select([
+        (dataset['minute'] < 15),
+        (dataset['minute'] < 30),
+        (dataset['minute'] < 45),
+        (dataset['minute'] < 60),
+        ],[0,1,2,3])
+    
+    
+
+
+34 Computes days, weeks, months, and years in df
+
+    df['diff_days'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'D')
+    df['diff_weeks'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'W')
+    df['diff_months'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'M')
+    df['diff_years'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'Y')
+    
+    #view updated DataFrame
+    print(df)
+    
+      start_date   end_date  diff_days  diff_weeks  diff_months  diff_years
+    0 2020-01-05 2020-06-30      177.0   25.285714     5.815314    0.484610
+    1 2020-01-12 2020-07-31      201.0   28.714286     6.603832    0.550319
+    2 2020-01-19 2020-08-31      225.0   32.142857     7.392349    0.616029
+    3 2020-01-26 2020-09-30      248.0   35.428571     8.148011    0.679001
+    4 2020-02-02 2020-10-31      272.0   38.857143     8.936528    0.744711
+    5 2020-02-09 2020-11-30      295.0   42.142857     9.692191    0.807683
+
+
+
+
+
+
+
+###------Math in dataframe------###
+
+# create a df:
+
+a =[
+        [1,2,1],
+        [1,2,2],
+        [2,2,1],
+        [2,2,1],
+        ]
+
+df = pd.DataFrame(a, columns = ['year', 'inf', 'wt'])
+#          year  inf  wt
+#       0     1    2   1
+#       1     1    2   2
+#       2     2    2   1
+#       3     2    2   1
+
+##------math of a column condition on the row values of another column------##
+#Use groupby to group rows with same values. For example, if we want to sum the inflation
+#rate for each year, we need to group rows according to values in 'year' col. Then sum()
+#the values in 'inf' col for each group.
+
+result = df.groupby(['year'])['inf'].sum()
+print(result)
+#       year
+#       1    4
+#       2    4
+
+##------math between two cols condition on the row values of another column------##
+# Suppose we want to multiply inf by wt then sum the product for each year, 
+
+result = df.groupby(['year']).apply(lambda row: (row.inf * row.wt).sum())
+print(result)
+
+#       year
+#       1    6          =2*1+2*2
+#       2    4          =2*1+2*1
+
+#we can further compute the weighted average, which is devide what we get above by the
+#summation of weight in each year.
+
+result = df.groupby(['year']).apply(lambda row: (row.inf * row.wt).sum()/row.wt.sum())
+print(result)
+#       year
+#       1    2.0        =(2*1+2*2)/(1+2)
+#       2    2.0        =(2*1+2*1)/(1+1)
+
+
+
+
+
+###------Search------###
+##------Find rows that are before a certain year------##
+
+df = pd.read_csv('./dataset.csv')
+df['YYYYMM'] = df['YYYYMM'].astype('datetime64')
+a = df[df['YYYYMM'].apply(lambda x: x.year < 1979)]
+print(a)
+
+
+
+
+
+
+###------Count obs using groupby.size()------###
+
+df_missing_frequency['num._of_obs'] = df_raw.groupby(time_col).size().values
+
+
+
+
+
+
+
+###------Lag terms------###
+To create a lag term of a column, we can use <shift> function
+
+
+          YYYYMM  AGE  PX1_weighted  
+0     1978-01-01   18      0.000000  
+1     1978-01-01   19      1.462500  
+2     1978-01-01   20      1.858700  
+3     1978-01-01   21      2.323373  
+4     1978-01-01   22      6.183000  
+
+
+To create a lag term for PX1_weighted, 
+    
+    df['PX1_weighted_lag1'] = df['PX1_weighted'].shift(1)
+
+where the numerical value in the parenthesis of the shift function identify the lag period. 
+
+
+Result:
+
+          YYYYMM  AGE  PX1_weighted    PX1_weighted_lag1
+0     1978-01-01   18      0.000000                  NaN
+1     1978-01-01   19      1.462500             0.000000
+2     1978-01-01   20      1.858700             1.462500
+3     1978-01-01   21      2.323373             1.858700
+4     1978-01-01   22      6.183000             2.323373
+
+
+
+
+###------Convert month to quarter------###
+
+Suppose I have df below,
+
+         YYYYMM  Inflation
+0    1872-01-01   1.524880
+1    1872-02-01  -1.479751
+2    1872-03-01  -1.458173
+3    1872-04-01   4.538217
+4    1872-05-01   7.008965
+
+
+I want to compute quarterly average inflation. 
+
+    # convert YYYYMM to quarter
+    df['YYYYMM'] = pd.PeriodIndex(pd.to_datetime(df.YYYYMM), freq = 'Q')
+
+    # Then group by quarter and compute mean.
+    df = df.groupby(['YYYYMM'], as_index = False).mean()
+     YYYYMM  Inflation
+0    1872Q1  -0.471015
+1    1872Q2   6.470473
+2    1872Q3   7.366998
+3    1872Q4   3.836112
+4    1873Q1   3.304951
+
+
+
+
+
+
+
+###------How to move a column to the first position in a dataframe------###
+
+
+Suppose 'YYYYMM' is the columns I would like to move.
+I can do it using df.insert(move_to_position, col_name, col):
+    df.insert(0, 'YYYYMM', df.pop('YYYYMM'))
+
+You do not need to assign this to a variable.
+
+
+
+
+###------Change column name------###
+df = df.rename(columns = {'oldname':'newname', 'oldname':'newname'})
+
+
+
+
+'''###------Add a new row------###'''
+You can append a new row using df.loc[<index_name>, <column_name>]
+
+    df.loc['edu1', 'reg1'] = 1
+
+If <index_name> does not exist, pandas will create a new row.
+
+
+
+
+
 """
 
 
-#print(df.columns)
+##print(df.columns)
+#
+#cdf = df.drop(columns = ['Unnamed: 0', 'Source', 'End_Time', 'Start_Lat', 'Start_Lng'])
+#cdf = cdf.drop(columns = ['End_Lat', 'End_Lng', 'Description', 'Number', 'Street'])
+#cdf = cdf.drop(columns = ['City', 'Zipcode', 'Country', 'Timezone', 'Airport_Code'])
+#cdf = cdf.drop(columns = ['Weather_Timestamp', 'Pressure(in)', 'Wind_Direction'])
+#cdf = cdf.drop(columns = ['Wind_Chill(F)', 'Precipitation(in)', 'Astronomical_Twilight'])
+#cdf = cdf.drop(columns = ['Nautical_Twilight', 'Civil_Twilight'])
+#print(cdf)
+#
+#cdf.to_csv('clean_df.csv', index = None)
+#
+#
+#
+#df = pd.DataFrame(['1111','12313', 'ffff'])
+#df.columns = ['name']
+#a = df.loc[df['name'].str.contains('fff')]
+#print(a)
+#
+#
+#
 
-cdf = df.drop(columns = ['Unnamed: 0', 'Source', 'End_Time', 'Start_Lat', 'Start_Lng'])
-cdf = cdf.drop(columns = ['End_Lat', 'End_Lng', 'Description', 'Number', 'Street'])
-cdf = cdf.drop(columns = ['City', 'Zipcode', 'Country', 'Timezone', 'Airport_Code'])
-cdf = cdf.drop(columns = ['Weather_Timestamp', 'Pressure(in)', 'Wind_Direction'])
-cdf = cdf.drop(columns = ['Wind_Chill(F)', 'Precipitation(in)', 'Astronomical_Twilight'])
-cdf = cdf.drop(columns = ['Nautical_Twilight', 'Civil_Twilight'])
-print(cdf)
+###------Math in dataframe------###
 
-cdf.to_csv('clean_df.csv', index = None)
+# create a df:
+
+a =[
+        [1,2,1],
+        [1,2,2],
+        [2,2,1],
+        [2,2,1],
+        ]
+
+df = pd.DataFrame(a, columns = ['year', 'inf', 'wt'])
+#          year  inf  wt
+#       0     1    2   1
+#       1     1    2   2
+#       2     2    2   1
+#       3     2    2   1
+
+##------math of a column condition on the row values of another column------##
+#Use groupby to group rows with same values. For example, if we want to sum the inflation
+#rate for each year, we need to group rows according to values in 'year' col. Then sum()
+#the values in 'inf' col for each group.
+result = df.groupby(['year'])['inf'].sum()
+print(result)
+#       year
+#       1    4
+#       2    4
+
+##------math between two cols condition on the row values of another column------##
+# Suppose we want to multiply inf by wt then sum the product for each year, 
+result = df.groupby(['year']).apply(lambda row: (row.inf * row.wt).sum())
+print(result)
+
+#       year
+#       1    6          =2*1+2*2
+#       2    4          =2*1+2*1
+
+#we can further compute the weighted average, which is devide what we get above by the
+#summation of weight in each year.
+result = df.groupby(['year']).apply(lambda row: (row.inf * row.wt).sum()/row.wt.sum())
+print(result)
+#       year
+#       1    2.0        =(2*1+2*2)/(1+2)
+#       2    2.0        =(2*1+2*1)/(1+1)
 
 
 
-df = pd.DataFrame(['1111','12313', 'ffff'])
-df.columns = ['name']
-a = df.loc[df['name'].str.contains('fff')]
-print(a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

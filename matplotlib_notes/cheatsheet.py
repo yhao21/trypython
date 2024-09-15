@@ -57,6 +57,21 @@ plt.clf()
 
 
 
+
+###------Log scale axis------###
+
+
+from matplotlib.ticker import FuncFormatter
+
+    plt.plot(x, y)
+    logbase = 2
+    plt.yscale('log', base = logbase)
+    plt.xscale('log', base = logbase)
+    # Convert logbase^1, logbase^2 to decimal values, i.e., 10^-2 --> 0.01
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x,y: '{}'.format(round(x, 3))))
+
+
+
 '''
 
 

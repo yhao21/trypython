@@ -100,6 +100,7 @@ $$$ 2. 使用创建函数：
     np.zeros(shpae)：    根据shape生成全0数组，默认为float除非设置dtype
     np.full(shape,val)： 根据shape生成一个数组，每个元素值都是val
     np.eye(n)：          创建正方形的n*n单位矩阵，对角线为1，其余为0,默认float
+    np.identity(n_row)          create an identity matrix
     
 
 ### 2.1 np.arange(n)
@@ -126,6 +127,16 @@ print(a)
      [1 1 1 1 1]
      [1 1 1 1 1]]
      
+
+### identity matrix
+a = np.identity(3)
+
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+
+
 ### 2.3 zeros(shape)
 
 a = np.zeros(4)
@@ -1956,6 +1967,22 @@ Remove a list of items from a ndarray (setdiff1d).
     a = np.setdiff1d(a,b)
     print(a)
     #   result: [2 4]
+
+
+
+
+
+
+
+
+
+
+
+====================
+Split an array/list into multiple sub_lists
+
+    np.array_split(<array>, n_splits)
+
 
 
 """
