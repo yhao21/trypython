@@ -631,6 +631,22 @@ If <index_name> does not exist, pandas will create a new row.
 
 
 
+###------Assign categories ------###
+
+        sub_df['YCATE'] = np.select([
+            (sub_df['INCOME'] <= loc1),
+            (sub_df['INCOME'] <= loc2),
+            (sub_df['INCOME'] <= loc3),
+            (sub_df['INCOME'] <= loc4),
+            (sub_df['INCOME'] > loc4),
+            ], [1, 2, 3, 4, 5])
+
+
+        loc1 ~ loc 4 are numerical values (cutoffs)
+
+
+
+
 """
 
 
