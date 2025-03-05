@@ -628,6 +628,9 @@ You can append a new row using df.loc[<index_name>, <column_name>]
 If <index_name> does not exist, pandas will create a new row.
 
 
+'''###------Fill nan with a certain value------###'''
+    df = df.fillna('0'), fill nan with 0
+
 
 
 
