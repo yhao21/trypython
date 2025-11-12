@@ -22,4 +22,9 @@ Add commas to throusand place.
 pd.options.display.float_format = "{:,}".format
 
 
+###------Change fontsize for df.to_html()------###
+You can manually use a <div> tag to wrap it up.
+
+df_latest = df.to_html()
+df_latest = f"<div style='font-size: 20px;'>{df_latest}</div>"
 """
