@@ -1985,6 +1985,10 @@ Split an array/list into multiple sub_lists
 
 
 
+====================
+Stop numpy printing np.float() in a list:
+
+    np.set_printoptions(legacy='1.25')
 """
 a = np.array([[1,1,1],[2,2,2]])
 b = a.ravel()
