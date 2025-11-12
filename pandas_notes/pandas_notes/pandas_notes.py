@@ -648,6 +648,10 @@ If <index_name> does not exist, pandas will create a new row.
         loc1 ~ loc 4 are numerical values (cutoffs)
 
 
+###------Format float number------###
+Add commas to throusand place.
+
+pd.options.display.float_format = "{:,}".format
 
 
 """
