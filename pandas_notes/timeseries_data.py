@@ -41,6 +41,7 @@ import pandas as pd
 ----------------------------------------------------------------------------------------------------
 ###------2. Frequency conversion and resampling of time series------###
 [Function]: df.resample()
+    Note, time series column/index must frist be converted to datetime format using `pd.to_datetime`
 
 
     [code]:
@@ -71,13 +72,39 @@ import pandas as pd
             ...
 
 
+[Function]: df.resample(..., on = 'Col_name')
+    Specify time series column to `on`.
 
+    [code]:
 
+        t = pd.date_range(start = '2020-01-01', end = '2025-01-01', freq = 'MS')
+        df = pd.DataFrame({'Time':t, 'value':[i for i in range(len(t))]})
+        df = df.resample('QS', on = 'Time').mean()
+    [result]:
+                    value
+        Time
+        2020-01-01    1.0
+        2020-04-01    4.0
+        2020-07-01    7.0
+        ...
+    
+
+###------3. convert YYYY-MM-DD to YYYYQn------###
+[Function]: pd.PeriodIndex(pd_series, freq = 'Q')
+
+    [code]:
+        t = pd.date_range(start = '2020-01-01', end = '2025-01-01', freq = 'MS')
+        df = pd.DataFrame({'Time':t, 'value':[i for i in range(len(t))]})
+        df['TimeQ'] = pd.PeriodIndex(df['Time'], freq = 'Q')
+    [result]:
+
+                 Time  value   TimeQ
+        0  2020-01-01      0  2020Q1
+        1  2020-02-01      1  2020Q1
+        2  2020-03-01      2  2020Q1
+    
             
 """
-
-
-
 
 
 
