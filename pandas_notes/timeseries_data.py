@@ -104,7 +104,32 @@ import pandas as pd
         2  2020-03-01      2  2020Q1
     
             
+###------Compute growth rate------###
+[Function]: df.pct_change(period = n)
+    [Note]: 
+        1. To get period over period growth rate, let n = 1 (default value)
+        2. For quarterly data, to get annual growth rate, let n = 4
+        3. For monthly data, to get annual growth rate, let n = 12
+
+
+    Example: Given quarterly GDP data, compute the annual growth rate.
+
+    [code]:
+        df = pd.read_csv('../../data/NGDP-BEA-Q.csv')
+        df['annual_growth_rate'] = df['Gross domestic product'].pct_change(periods = 4)
+
+    [result]:
+               Time  Gross domestic product  annual_growth_rate
+        0    1947Q1                 243.164                 NaN
+        1    1947Q2                 245.968                 NaN
+        2    1947Q3                 249.585                 NaN
+        3    1947Q4                 259.745                 NaN
+        4    1948Q1                 265.742            0.092851
+        ..      ...                     ...                 ...
+        312  2025Q1               30042.113            0.046466
+        313  2025Q2               30485.729            0.045929
 """
+
 
 
 
