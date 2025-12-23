@@ -106,6 +106,27 @@ import pandas as pd
         0  2020-01-01      0  2020Q1
         1  2020-02-01      1  2020Q1
         2  2020-03-01      2  2020Q1
+
+
+###------Get the first and last period------###
+[Function]: .start_time, .end_time
+Given a year (in integer), get the first and last quarter in that year
+    [code]:
+        given_t = 2024
+        t = pd.Period(given_t, freq = 'Q') # Output: 2024Q1
+        first_period = pd.Period(given_t).start_time.to_period('Q') # Output: 2024Q1
+        last_period = pd.Period(given_t).end_time.to_period('Q') # Output: 2024Q4
+
+
+Given a date (in string), get the first and last in a given frequency.
+    [code]:
+        given_t = '2024Q1'
+        given_freq = 'M'
+        t = pd.Period(given_t)
+        first_period = t.start_time.to_period(given_freq) # Output: 2024-01
+        last_period = t.end_time.to_period(given_freq) # Output: 2024-03
+        
+
     
             
 ###------Compute growth rate------###
