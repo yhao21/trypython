@@ -96,6 +96,10 @@ import pandas as pd
         t = pd.date_range(start = '2020-01-01', end = '2025-01-01', freq = 'MS')
         df = pd.DataFrame({'Time':t, 'value':[i for i in range(len(t))]})
         df['TimeQ'] = pd.PeriodIndex(df['Time'], freq = 'Q')
+
+        or
+        df['TimeQ'] = df['Time'].dt.to_period('Q')
+
     [result]:
 
                  Time  value   TimeQ
